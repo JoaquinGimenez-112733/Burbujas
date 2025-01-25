@@ -10,6 +10,7 @@ var cerca = false
 # Simbolos que tiene y quiere
 var tiene = ['escritura','fabrica']
 var quiere = ['agua']
+var nombre = "Yoli"
 
 func _process(delta: float) -> void:
 	queue_redraw()
