@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://deakjp4t0n86v" path="res://Assets/mystic_woods_free_2.2/sprites/characters/player.png" id="1_q3sox"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_s0s3a"]
-[ext_resource type="PackedScene" uid="uid://cfit05gta61mj" path="res://Scenes/sidebar.tscn" id="2_vlpk4"]
+[ext_resource type="PackedScene" path="res://Scenes/sidebar.tscn" id="2_vlpk4"]
 [ext_resource type="Shader" path="res://Scenes/player.gdshader" id="4_osldb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_46gc6"]
