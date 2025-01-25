@@ -26,8 +26,8 @@ func _on_area_art_body_exited(body: Node2D) -> void:
 
 
 func _on_area_nat_body_entered(body: Node2D) -> void:
-	$AreaNat/AudioStreamPlayer2D.play()
+	$AreaNat/AudioGlobalNat.play()
 
 
 func _on_area_nat_body_exited(body: Node2D) -> void:
-	$AreaNat/AudioStreamPlayer2D.stop()
+	$AreaNat/AudioGlobalNat.stop()
