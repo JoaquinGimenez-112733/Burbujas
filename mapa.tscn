@@ -1,4 +1,4 @@
-[gd_scene load_steps=128 format=4 uid="uid://difm4ufjlrnml"]
+[gd_scene load_steps=133 format=4 uid="uid://c4cruykny8epm"]
 
 [ext_resource type="Script" path="res://Scripts/mapa.gd" id="1_57yuv"]
 [ext_resource type="Texture2D" uid="uid://cgq05wjmj126m" path="res://Assets/Godot_Autotiles_32x32.png" id="1_ywgvb"]
