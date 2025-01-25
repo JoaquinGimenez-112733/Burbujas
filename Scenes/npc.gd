@@ -11,7 +11,6 @@ var cerca = false
 var tiene = ['a','b']
 var quiere = ['c']
 
-var seleccionado = false
 var nombre : String = "Yoli"
 
 	
@@ -42,12 +41,12 @@ func _draw():
 # Al entrar o salir del area de "Influencia", 
 # seteamos la variable `cerca`
 func _on_influencia_body_entered(body: Node2D) -> void:
-	if body is Player: 
+	if body.is_in_group("Player"): 
 		cerca = true
 		$Globito.aparecer()
 		
 func _on_influencia_body_exited(body: Node2D) -> void:
-	if body is Player: 
+	if  body.is_in_group("Player"):
 		cerca = false
 		$Globito.desaparecer()
 

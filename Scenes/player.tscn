@@ -1,12 +1,13 @@
+<<<<<<< HEAD
 [gd_scene load_steps=35 format=3 uid="uid://btjree5t4cqkr"]
+=======
+[gd_scene load_steps=33 format=3 uid="uid://btjree5t4cqkr"]
+>>>>>>> e6e2b9b54d4b8064c94d6117b073e82b781f42ae
 
 [ext_resource type="Texture2D" uid="uid://deakjp4t0n86v" path="res://Assets/mystic_woods_free_2.2/sprites/characters/player.png" id="1_q3sox"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_s0s3a"]
 [ext_resource type="PackedScene" uid="uid://cfit05gta61mj" path="res://Scenes/sidebar.tscn" id="4_21wc7"]
 [ext_resource type="Shader" path="res://Scenes/player.gdshader" id="4_osldb"]
-
-[sub_resource type="Resource" id="Resource_0n3e8"]
-metadata/__load_path__ = "res://Assets/Sounds/pasos tierra.wav"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_46gc6"]
 shader = ExtResource("4_osldb")
@@ -225,14 +226,17 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bbxc0"]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Players"]]
 texture_filter = 1
 script = ExtResource("1_s0s3a")
 is_player = true
+<<<<<<< HEAD
 stat1 = null
 stat2 = null
 stat3 = null
 footstep = SubResource("Resource_0n3e8")
+=======
+>>>>>>> e6e2b9b54d4b8064c94d6117b073e82b781f42ae
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -255,7 +259,7 @@ offset_bottom = -103.0
 
 [node name="sfx_player" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
-volume_db = 15.0
+volume_db = 10.0
 
 [node name="Tooltip" type="Control" parent="."]
 unique_name_in_owner = true

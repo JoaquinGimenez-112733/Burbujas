@@ -1,14 +1,12 @@
 extends CharacterBody2D
 
-class_name Player
-
-const SPEED = 3
+const SPEED = 4
 @export var is_player = false
 @export var stat1 = "ಠ_ಠ"
 @export var stat2 = "(•◡•) /"
 @export var stat3 = "ᶘ ◕ᴥ◕ᶅ"
 @export var footstep : AudioStream
-var footsteps_array : Array = [1]
+var footsteps_array : Array = [0,2]
 
 var seleccionado = false
 	
@@ -80,13 +78,6 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 				Globals.player_selecteds -= 1
 				self.seleccionado = false
 				$AnimatedSprite2D.material.set_shader_parameter("seleccionado", seleccionado)
-
-func add_npc_to_sidebar(npc : Npc):
-	print(npc.nombre)
-	#var label = Label.new()
-	#label.text = npc.nombre
-	#get_tree().get_node("Sidebar").$VboxContainer.add_child(label)
-
 
 func _on_area_2d_body_entered(body) -> void:
 	if body.is_in_group("Npc"):

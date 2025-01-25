@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnd0l3r4op6q8"]
+
+[ext_resource type="PackedScene" uid="uid://btjree5t4cqkr" path="res://Scenes/player.tscn" id="1_7r58n"]
+[ext_resource type="PackedScene" uid="uid://difm4ufjlrnml" path="res://mapa.tscn" id="2_cbrt5"]
+[ext_resource type="PackedScene" uid="uid://bg77gjdjv3o56" path="res://Scenes/npc.tscn" id="4_bxaog"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Mapa" parent="." instance=ExtResource("2_cbrt5")]
+position = Vector2(-215, 21)
+
+[node name="Player" parent="." instance=ExtResource("1_7r58n")]
+position = Vector2(246, 127)
+footstep = null
+
+[node name="NPC" parent="." instance=ExtResource("4_bxaog")]
+position = Vector2(362, 163)
+script = null
