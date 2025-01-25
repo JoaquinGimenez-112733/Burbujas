@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
-const SPEED = 4
+class_name Player
+
+const SPEED = 200
 @export var is_player = false
 @export var stat1 = "ಠ_ಠ"
 @export var stat2 = "(•◡•) /"
@@ -16,23 +18,20 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
+	velocity = Input.get_vector("LEFT", "RIGHT","UP","DOWN")*SPEED
+	move_and_slide()
 #Mapeo de controles, para el movimiento del personaje
 	if Input.is_action_pressed("UP"):
-		position.y -= 1 * SPEED
 		$AnimatedSprite2D.play("walk_up")
 		
 	elif Input.is_action_pressed("DOWN"):
-		position.y += 1 * SPEED
 		$AnimatedSprite2D.play("walk_down")
 		
 	elif Input.is_action_pressed("LEFT"):
-		position.x -= 1 * SPEED
 		$AnimatedSprite2D.play("walk_h")
 		$AnimatedSprite2D.flip_h = true
 		
 	elif Input.is_action_pressed("RIGHT"):
-		position.x += 1 * SPEED
 		$AnimatedSprite2D.play("walk_h")
 		$AnimatedSprite2D.flip_h = false
 		

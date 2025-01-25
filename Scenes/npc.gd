@@ -8,8 +8,8 @@ var hablando = false
 var cerca = false
 
 # Simbolos que tiene y quiere
-var tiene = ['escritura','fabrica']
-var quiere = ['agua']
+var tiene = []
+var quiere = []
 
 func _process(delta: float) -> void:
 	queue_redraw()
@@ -37,12 +37,12 @@ func _draw():
 # Al entrar o salir del area de "Influencia", 
 # seteamos la variable `cerca`
 func _on_influencia_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"): 
+	if body is Player: 
 		cerca = true
 		$Globito.aparecer()
 		
 func _on_influencia_body_exited(body: Node2D) -> void:
-	if  body.is_in_group("Player"):
+	if  body is Player:
 		cerca = false
 		$Globito.desaparecer()
 

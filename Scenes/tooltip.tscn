@@ -28,13 +28,13 @@ texture_filter = 1
 
 [node name="?" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(31, -2)
+position = Vector2(24, -3)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_b2n7o")
 
 [node name="¿" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(-37, 0)
+position = Vector2(-28, -2)
 rotation = 3.14159
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_b2n7o")
