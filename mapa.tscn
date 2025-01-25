@@ -1,4 +1,4 @@
-[gd_scene load_steps=128 format=4 uid="uid://c4cruykny8epm"]
+[gd_scene load_steps=128 format=4 uid="uid://difm4ufjlrnml"]
 
 [ext_resource type="Script" path="res://Scripts/mapa.gd" id="1_57yuv"]
 [ext_resource type="Texture2D" uid="uid://cgq05wjmj126m" path="res://Assets/Godot_Autotiles_32x32.png" id="1_ywgvb"]
@@ -43,13 +43,13 @@
 [ext_resource type="Texture2D" uid="uid://bp242gr2o7jxo" path="res://Assets/ME_Singles_Police_Station_32x32_Police_Car_4.png" id="35_m5hq1"]
 [ext_resource type="Texture2D" uid="uid://m363f7rdl0q3" path="res://Assets/ME_Singles_School_32x32_Soccer_Court_1.png" id="36_64sgb"]
 [ext_resource type="Texture2D" uid="uid://0k7wbpqdpo7v" path="res://Assets/ME_Singles_School_32x32_Stadium_Light_3.png" id="37_uam43"]
-[ext_resource type="AudioStream" uid="uid://dn4hhv2mh1ghc" path="res://Assets/Sounds/Fondo armonia con la naturaleza.wav" id="38_0n1o3"]
 [ext_resource type="Texture2D" uid="uid://bw1y0tjagvlmr" path="res://Assets/ME_Singles_School_32x32_Stadium_Light_4.png" id="38_020ks"]
+[ext_resource type="AudioStream" uid="uid://dfubh6qvfpvy3" path="res://Assets/Sounds/Sound Naturaleza.wav" id="39_2qxwg"]
 [ext_resource type="Texture2D" uid="uid://lx2btix1sy26" path="res://Assets/ME_Singles_Shopping_Center_and_Markets_32x32_Mall_Props_4.png" id="39_cs6rb"]
 [ext_resource type="AudioStream" uid="uid://cqil27ipldyw2" path="res://Assets/Sounds/Musica progreso.wav" id="39_q471h"]
-[ext_resource type="AudioStream" uid="uid://dpbtjgbfemimd" path="res://Assets/Sounds/fondo musica artistas.wav" id="40_p0tlp"]
 [ext_resource type="Texture2D" uid="uid://cbltxyi7x0m4a" path="res://Assets/ME_Singles_Terrains_and_Fences_32x32_Wall_2_13.png" id="40_qaiko"]
 [ext_resource type="Texture2D" uid="uid://cxdi4o3i71xu8" path="res://Assets/ME_Singles_Terrains_and_Fences_32x32_Wall_2_14.png" id="41_3fp3l"]
+[ext_resource type="AudioStream" uid="uid://ob4wy8oblfr7" path="res://Assets/Sounds/Sound Artistas.wav" id="41_lxban"]
 [ext_resource type="Texture2D" uid="uid://cnrotinrgsuwe" path="res://Assets/ME_Singles_Terrains_and_Fences_32x32_Wall_2_15.png" id="42_bu3ry"]
 [ext_resource type="Texture2D" uid="uid://dss7j2a1et34m" path="res://Assets/ME_Singles_Vehicles_32x32_Ambulance_Up_2.png" id="43_w3khw"]
 [ext_resource type="Texture2D" uid="uid://cas1p08c1tw4b" path="res://Assets/ME_Singles_Vehicles_32x32_Bus_Left_2.png" id="44_r5o5h"]
@@ -57,9 +57,6 @@
 [ext_resource type="Texture2D" uid="uid://bj4kjxwiosajs" path="res://Assets/ME_Singles_Vehicles_32x32_Car_Right_4.png" id="47_hrr51"]
 [ext_resource type="Texture2D" uid="uid://bjgkllr7es2op" path="res://Assets/ME_Singles_Vehicles_32x32_Car_Up_5.png" id="48_e730x"]
 [ext_resource type="Texture2D" uid="uid://d343na1e7besr" path="res://Assets/ME_Singles_Vehicles_32x32_Gas_Station_1.png" id="49_aitvx"]
-[ext_resource type="AudioStream" uid="uid://dfubh6qvfpvy3" path="res://Assets/Sounds/Sound Naturaleza.wav" id="39_2qxwg"]
-[ext_resource type="AudioStream" uid="uid://cqil27ipldyw2" path="res://Assets/Sounds/Musica progreso.wav" id="39_q471h"]
-[ext_resource type="AudioStream" uid="uid://ob4wy8oblfr7" path="res://Assets/Sounds/Sound Artistas.wav" id="41_lxban"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rw7kc"]
 rough = true
@@ -35150,10 +35147,10 @@ sources/43 = SubResource("TileSetAtlasSource_4jk82")
 size = Vector2(5584, 3113)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhhff"]
-size = Vector2(2659, 1820)
+size = Vector2(2876.5, 1820)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vceek"]
-size = Vector2(2515.75, 1254.5)
+size = Vector2(2589.88, 1193.25)
 
 [node name="Mapa" type="Node2D"]
 position = Vector2(17, 36)
@@ -35183,7 +35180,6 @@ tile_set = SubResource("TileSet_m07xr")
 [node name="ItemsArt" type="TileMapLayer" parent="."]
 
 [node name="AreaNat" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaNat"]
 position = Vector2(2838, 1645)
@@ -35197,33 +35193,31 @@ attenuation = 2.0
 panning_strength = 0.3
 
 [node name="AreaProgress" type="Area2D" parent="."]
-visible = false
 position = Vector2(-94, 71)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaProgress"]
-position = Vector2(4293.5, 900)
+position = Vector2(4232, 904)
 shape = SubResource("RectangleShape2D_rhhff")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AreaProgress"]
-position = Vector2(4147, 885)
+position = Vector2(4115, 821)
 stream = ExtResource("39_q471h")
-volume_db = 10.896
-attenuation = 1.31951
+volume_db = -2.97
+max_distance = 1500.0
+attenuation = 0.500001
 panning_strength = 0.0
-playback_type = 1
 
 [node name="AreaArt" type="Area2D" parent="."]
-visible = false
 position = Vector2(313, -437)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaArt"]
-position = Vector2(3943.88, 3033.25)
+position = Vector2(3906.94, 2979.62)
 shape = SubResource("RectangleShape2D_vceek")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AreaArt"]
 position = Vector2(3993, 2982)
 stream = ExtResource("41_lxban")
-volume_db = 15.0
+volume_db = -5.8
 max_distance = 1500.0
 
 [connection signal="body_entered" from="AreaNat" to="." method="_on_area_nat_body_entered"]
