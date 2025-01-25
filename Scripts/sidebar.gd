@@ -12,6 +12,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	for npc in Globals.items_sidebar:
 		if npc.nombre not in array_names:
+			var panel = PanelContainer.new()
+			var margin = MarginContainer.new()
+			
+			const margin_size = 5
+			margin.add_theme_constant_override("margin_top",margin_size)
+			margin.add_theme_constant_override("margin_bottom",margin_size)
+			margin.add_theme_constant_override("margin_left",margin_size)
+			margin.add_theme_constant_override("margin_right",margin_size)
+			
 			var hbox = HBoxContainer.new()
 			var texture_rect = TextureRect.new()
 			texture_rect.stretch_mode =TextureRect.STRETCH_KEEP_CENTERED			
@@ -26,7 +35,11 @@ func _process(delta: float) -> void:
 			vbox_labels.add_child(label)
 			vbox_labels.add_child(label2)
 			hbox.add_child(vbox_labels)
-			v_box_container.add_child(hbox)
+			#v_box_container.add_child(hbox)
+			margin.add_child(hbox)
+			panel.add_child(margin)
+			v_box_container.add_child(panel)
+			
 		array_names.append(npc.nombre)
 	#for npc in Globals.npcs:
 		#
