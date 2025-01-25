@@ -11,7 +11,7 @@ const SPEED = 200
 var footsteps_array : Array = [0,3]
 
 var seleccionado = false
-	
+var sidebar_open = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Camera2D.zoom = Vector2(Globals.player_camera_zoom, Globals.player_camera_zoom)
@@ -19,6 +19,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_left"):		
+		sidebar_control()
+		
 	velocity = Input.get_vector("LEFT", "RIGHT","UP","DOWN")*SPEED
 	move_and_slide()
 #Mapeo de controles, para el movimiento del personaje
@@ -85,7 +88,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var nombre = body.get("nombre")
 		if nombre not in Globals.npcs:
 			
-			#Globals.npcs.append(nombre)
 			if body.has_node("AnimatedSprite2D"):
 				var animated_sprite = body.get_node("AnimatedSprite2D") as AnimatedSprite2D
 				if animated_sprite:
@@ -98,6 +100,16 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 					var miniatura : Texture2D = texture
 					print(tiene.size(), tiene.size(), quiere.size())
 					Globals.miniaturas.append(miniatura)
-					
-					var item = Item_Sidebar.new(miniatura, nombre, tiene[0], tiene[1], quiere[0])
+					var array_total : Array[CompressedTexture2D]
+					array_total.append_array(quiere)
+					array_total.append_array(tiene)
+					var item = Item_Sidebar.new(miniatura, nombre, array_total)
 					Globals.items_sidebar.append(item)
+					
+func sidebar_control():
+	if sidebar_open:
+		create_tween().tween_property($Sidebar, "modulate", Color.TRANSPARENT, 0.6)
+		sidebar_open = false
+	elif !sidebar_open:
+		create_tween().tween_property($Sidebar, "modulate", Color.WHITE, 0.6)
+		sidebar_open = true
