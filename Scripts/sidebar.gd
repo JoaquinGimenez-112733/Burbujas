@@ -28,12 +28,20 @@ func _process(delta: float) -> void:
 			hbox.add_child(texture_rect)
 			
 			var vbox_labels = VBoxContainer.new()
-			var label  = Label.new()			
-			var label2 = Label.new()	
-			label.text = npc.nombre
-			label2.text = npc.stat1 + "-" + npc.stat2 + "-" + npc.stat3
+			var label  = Label.new()
+			label.text = npc.nombre		
+			var hboxImagenes = HBoxContainer.new()	
+			print(npc.array_imagenes.size())
+			for imagen in npc.array_imagenes:
+				var texture1 = TextureRect.new()
+				texture1.stretch_mode =TextureRect.STRETCH_KEEP_CENTERED			
+				texture1.texture = imagen
+				hboxImagenes.add_child(texture1)
+
+			
 			vbox_labels.add_child(label)
-			vbox_labels.add_child(label2)
+			#vbox_labels.add_child(label2)
+			vbox_labels.add_child(hboxImagenes)
 			hbox.add_child(vbox_labels)
 			margin.add_child(hbox)
 			panel.add_child(margin)
