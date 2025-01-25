@@ -12,7 +12,7 @@ var seleccionado = false
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	$Camera2D.zoom = Vector2(Globals.player_camera_zoom, Globals.player_camera_zoom)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -53,19 +53,12 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if $AnimatedSprite2D.frame in footsteps_array:
 		%sfx_player.play()
 	
+func _on_mouse_entered() -> void:
+	print("Activando...")
+	$Tooltip.activar(stat1, stat2, stat3)
 
-
-func _on_tooltip_mouse_entered() -> void:
-#Tooltip para cuando hoveriemos el personaje
-	$Tooltip/PopupPanel/VBoxContainer/Label.text = stat1
-	$Tooltip/PopupPanel/VBoxContainer/Label2.text = stat2
-	$Tooltip/PopupPanel/VBoxContainer/Label3.text = stat3
-	$Tooltip/PopupPanel.popup()
-
-
-func _on_tooltip_mouse_exited() -> void:
-#Escondemos el tooltip cuando salimos de hover
-	$Tooltip/PopupPanel.hide()
+func _on_mouse_exited() -> void:
+	$Tooltip.cerrar()
 
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:	

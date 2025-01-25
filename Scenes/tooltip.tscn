@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw5r03j38aq20"]
+
+[ext_resource type="Script" path="res://Scenes/tooltip.gd" id="1_4a54v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ont2r"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.783704, 0.540817, 0.305253, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Tooltip" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -556.0
+offset_bottom = -304.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_4a54v")
+
+[node name="PopupPanel" type="PopupPanel" parent="."]
+auto_translate_mode = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_ont2r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupPanel"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 90.0
+offset_bottom = 90.0
+
+[node name="Label" type="Label" parent="PopupPanel/VBoxContainer"]
+layout_mode = 2
+text = "ALLOO"
+
+[node name="Label2" type="Label" parent="PopupPanel/VBoxContainer"]
+layout_mode = 2
+text = "BBB"
+
+[node name="Label3" type="Label" parent="PopupPanel/VBoxContainer"]
+layout_mode = 2

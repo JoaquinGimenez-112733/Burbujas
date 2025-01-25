@@ -225,6 +225,7 @@ corner_radius_bottom_left = 10
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bbxc0"]
 
 [node name="Player" type="CharacterBody2D"]
+texture_filter = 1
 script = ExtResource("1_s0s3a")
 is_player = true
 footstep = SubResource("Resource_0n3e8")
@@ -264,8 +265,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_e6ynp")
 [node name="VBoxContainer" type="VBoxContainer" parent="Tooltip/PopupPanel"]
 offset_left = 10.0
 offset_top = 10.0
-offset_right = 70.0
-offset_bottom = 96.0
+offset_right = 64.0
+offset_bottom = 87.0
 
 [node name="Label" type="Label" parent="Tooltip/PopupPanel/VBoxContainer"]
 layout_mode = 2
@@ -285,6 +286,8 @@ position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_bbxc0")
 debug_color = Color(0.733762, 0.447586, 0.403437, 0.42)
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="mouse_entered" from="Tooltip" to="." method="_on_tooltip_mouse_entered"]
 [connection signal="mouse_exited" from="Tooltip" to="." method="_on_tooltip_mouse_exited"]

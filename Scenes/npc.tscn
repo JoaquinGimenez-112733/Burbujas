@@ -1,0 +1,95 @@
+[gd_scene load_steps=13 format=3 uid="uid://bg77gjdjv3o56"]
+
+[ext_resource type="Script" path="res://Scenes/npc.gd" id="1_a1xwy"]
+[ext_resource type="Texture2D" uid="uid://deakjp4t0n86v" path="res://Assets/mystic_woods_free_2.2/sprites/characters/player.png" id="1_mffem"]
+[ext_resource type="PackedScene" uid="uid://cw5r03j38aq20" path="res://Scenes/tooltip.tscn" id="3_8hxl5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffpf3"]
+atlas = ExtResource("1_mffem")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bc3gj"]
+atlas = ExtResource("1_mffem")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2mr5"]
+atlas = ExtResource("1_mffem")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k21a1"]
+atlas = ExtResource("1_mffem")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udikq"]
+atlas = ExtResource("1_mffem")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrb76"]
+atlas = ExtResource("1_mffem")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j0xcs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffpf3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bc3gj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2mr5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k21a1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udikq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrb76")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_53i68"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vkp06"]
+
+[node name="NPC" type="CharacterBody2D"]
+position = Vector2(80, 53)
+script = ExtResource("1_a1xwy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_j0xcs")
+animation = &"idle"
+frame_progress = 0.0322959
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_53i68")
+
+[node name="AreaTooltip" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaTooltip"]
+shape = SubResource("CapsuleShape2D_vkp06")
+
+[node name="Tooltip" parent="." instance=ExtResource("3_8hxl5")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="mouse_entered" from="AreaTooltip" to="." method="_on_area_tooltip_mouse_entered"]
+[connection signal="mouse_exited" from="AreaTooltip" to="." method="_on_area_tooltip_mouse_exited"]
