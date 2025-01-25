@@ -1,14 +1,12 @@
 extends CharacterBody2D
 
-class_name Player
-
-const SPEED = 3
+const SPEED = 4
 @export var is_player = false
 @export var stat1 = "ಠ_ಠ"
 @export var stat2 = "(•◡•) /"
 @export var stat3 = "ᶘ ◕ᴥ◕ᶅ"
 @export var footstep : AudioStream
-var footsteps_array : Array = [1]
+var footsteps_array : Array = [0,2]
 
 var seleccionado = false
 	

@@ -24,6 +24,7 @@ Nombres="*res://Scripts/nombres.gd"
 [global_group]
 
 NPCs="Todos los NPCs del juego"
+Players=""
 
 [gui]
 

@@ -1,5 +1,6 @@
-[gd_scene load_steps=89 format=4 uid="uid://difm4ufjlrnml"]
+[gd_scene load_steps=93 format=4 uid="uid://difm4ufjlrnml"]
 
+[ext_resource type="Script" path="res://Scripts/mapa.gd" id="1_57yuv"]
 [ext_resource type="Texture2D" uid="uid://cgq05wjmj126m" path="res://Assets/Godot_Autotiles_32x32.png" id="1_ywgvb"]
 [ext_resource type="Texture2D" uid="uid://3tajgeqsp6yx" path="res://Assets/tilesets/d36bih3-7bd0f401-eaaa-493a-b102-e5abbcb3bc67.png" id="2_ptifv"]
 [ext_resource type="Texture2D" uid="uid://chclwdunku5yf" path="res://Assets/tilesets/d4hnexf-322e4495-bf5d-4bf1-ad9e-f1715aff9217.png" id="3_sh212"]
@@ -37,6 +38,9 @@
 [ext_resource type="Texture2D" uid="uid://cn6e85lgluhiq" path="res://Assets/ME_Singles_Garden_32x32_Medium_Sunflower.png" id="28_j8fet"]
 [ext_resource type="Texture2D" uid="uid://yqcr1skk2nbc" path="res://Assets/ME_Singles_Garden_32x32_White_Wood_Storage.png" id="29_uciv0"]
 [ext_resource type="Texture2D" uid="uid://ctk7qj6w6ocrs" path="res://Assets/ME_Singles_Graveyard_32x32_Small_Brown_Tombstone_2.png" id="30_ikgui"]
+[ext_resource type="AudioStream" uid="uid://dn4hhv2mh1ghc" path="res://Assets/Sounds/Fondo armonia con la naturaleza.wav" id="38_0n1o3"]
+[ext_resource type="AudioStream" uid="uid://cqil27ipldyw2" path="res://Assets/Sounds/Musica progreso.wav" id="39_q471h"]
+[ext_resource type="AudioStream" uid="uid://dpbtjgbfemimd" path="res://Assets/Sounds/fondo musica artistas.wav" id="40_p0tlp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xlj7u"]
 texture = ExtResource("1_ywgvb")
@@ -33178,16 +33182,18 @@ sources/25 = SubResource("TileSetAtlasSource_65kr7")
 sources/26 = SubResource("TileSetAtlasSource_035f2")
 sources/28 = SubResource("TileSetAtlasSource_6m5kf")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ed6uy"]
-size = Vector2(2484.5, 3142.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rt2hd"]
+size = Vector2(5593, 3247)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhhff"]
-size = Vector2(2607, 1757)
+size = Vector2(2706, 1757)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vceek"]
-size = Vector2(2625.5, 1409)
+size = Vector2(2625.5, 1322.5)
 
 [node name="Mapa" type="Node2D"]
+position = Vector2(17, 36)
+script = ExtResource("1_57yuv")
 
 [node name="Mundo" type="TileMapLayer" parent="."]
 scale = Vector2(0.877551, 0.834752)
@@ -33211,27 +33217,48 @@ tile_map_data = PackedByteArray("AADWAEMACgAAAAEAAADWAEQACgAAAAIAAADWAEUACgAAAAM
 tile_set = SubResource("TileSet_m07xr")
 
 [node name="AreaNat" type="Area2D" parent="."]
-visible = false
+position = Vector2(24, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaNat"]
-position = Vector2(1265.75, 1618.75)
-shape = SubResource("RectangleShape2D_ed6uy")
+position = Vector2(2786.5, 1613.5)
+shape = SubResource("RectangleShape2D_rt2hd")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AreaNat"]
+position = Vector2(1156, 1734)
+stream = ExtResource("38_0n1o3")
+max_distance = 2500.0
+attenuation = 0.757858
 
 [node name="AreaProgress" type="Area2D" parent="."]
-visible = false
+position = Vector2(-94, 71)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaProgress"]
-position = Vector2(4319.5, 868.5)
+position = Vector2(4270, 868.5)
 shape = SubResource("RectangleShape2D_rhhff")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AreaProgress"]
+position = Vector2(4147, 885)
+stream = ExtResource("39_q471h")
+volume_db = -8.914
+attenuation = 1.31951
+panning_strength = 0.0
+playback_type = 1
 
 [node name="AreaArt" type="Area2D" parent="."]
+position = Vector2(313, -437)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaArt"]
-position = Vector2(4295.75, 2461)
+position = Vector2(3889, 2999.25)
 shape = SubResource("RectangleShape2D_vceek")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AreaArt"]
+position = Vector2(3621, 2793)
+stream = ExtResource("40_p0tlp")
+volume_db = -4.952
+
+[connection signal="body_entered" from="AreaNat" to="." method="_on_area_nat_body_entered"]
+[connection signal="body_exited" from="AreaNat" to="." method="_on_area_nat_body_exited"]
+[connection signal="body_entered" from="AreaProgress" to="." method="_on_area_progress_body_entered"]
+[connection signal="body_exited" from="AreaProgress" to="." method="_on_area_progress_body_exited"]
+[connection signal="body_entered" from="AreaArt" to="." method="_on_area_art_body_entered"]
+[connection signal="body_exited" from="AreaArt" to="." method="_on_area_art_body_exited"]
