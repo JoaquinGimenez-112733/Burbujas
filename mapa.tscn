@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://difm4ufjlrnml"]
+[gd_scene load_steps=14 format=4 uid="uid://c4cruykny8epm"]
 
 [ext_resource type="Texture2D" uid="uid://cgq05wjmj126m" path="res://Assets/Godot_Autotiles_32x32.png" id="1_ywgvb"]
 [ext_resource type="Texture2D" uid="uid://3tajgeqsp6yx" path="res://Assets/tilesets/d36bih3-7bd0f401-eaaa-493a-b102-e5abbcb3bc67.png" id="2_ptifv"]
