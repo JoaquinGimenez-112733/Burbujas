@@ -8,8 +8,8 @@ var hablando = false
 var cerca = false
 
 # Simbolos que tiene y quiere
-var tiene = ['a','b']
-var quiere = ['c']
+var tiene = ['escritura','fabrica']
+var quiere = ['agua']
 
 var nombre : String = "Yoli"
 
