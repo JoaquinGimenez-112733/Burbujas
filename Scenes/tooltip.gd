@@ -31,6 +31,7 @@ func preguntar(txts):
 		await tween_salida()
 		$"¿".visible = false
 		$"?".visible = false
+		
 # Transiciona la entrada del tooltip... su opacidad y posición
 func tween_entrada():
 	modulate = Color.TRANSPARENT
