@@ -1,55 +1,80 @@
 extends Node
 
-var simbolos = {
-	 'agua' :  {
+var dominios = ['naturaleza', 'arte', 'progreso']
+
+var simbolos = [
+	{
+		'nombre': 'agua',
 		'imagen': preload('res://Assets/ICONOS/AGUA.png'),
 		'dominio': 'naturaleza',
 	},
-	 'escritura' :  {
+	{
+		'nombre': 'escritura',
 		'imagen': preload('res://Assets/ICONOS/ESCRITURA.png'),
 		'dominio': 'arte',
 	},
-	 'fabrica' :  {
+	{
+		'nombre': 'fabrica',
 		'imagen': preload('res://Assets/ICONOS/FABRICA.png'),
 		'dominio': 'progreso',
 	},
-	 'foco' :  {
+	{
+		'nombre': 'foco',
 		'imagen': preload('res://Assets/ICONOS/FOCO.png'),
 		'dominio': 'progreso',
 	},
-	 'fotografía' :  {
+	{
+		'nombre': 'fotografía',
 		'imagen': preload('res://Assets/ICONOS/FOTOGRAFIA.png'),
 		'dominio': 'progreso',
 	},
-	 'gas' :  {
+	{
+		'nombre': 'gas',
 		'imagen': preload('res://Assets/ICONOS/GAS.png'),
 		'dominio': 'progreso',
 	},
-	 'cultivo' :  {
+	{
+		'nombre': 'cultivo',
 		'imagen': preload('res://Assets/ICONOS/MANOS.png'),
 		'dominio': 'naturaleza',
 	},
-	 'montañas' :  {
+	{
+		'nombre': 'montañas',
 		'imagen': preload('res://Assets/ICONOS/MONTAÑAS.png'),
 		'dominio': 'naturaleza',
 	},
-	 'pintura' :  {
+	{
+		'nombre': 'pintura',
 		'imagen': preload('res://Assets/ICONOS/PALETA.png'),
 		'dominio': 'arte',
 	},
-	 'plantita' :  {
+	{
+		'nombre': 'plantita',
 		'imagen': preload('res://Assets/ICONOS/PLANTITA.png'),
 		'dominio': 'naturaleza',
 	},
-	 'teatro' :  {
+	{
+		'nombre': 'teatro',
 		'imagen': preload('res://Assets/ICONOS/TEATRO.png'),
 		'dominio': 'arte',
 	},
-	 'torre' :  {
+	{
+		'nombre': 'torre',
 		'imagen': preload('res://Assets/ICONOS/TORRE ENERGIA.png'),
 		'dominio': 'progreso',
 	},
-}
+]
+
+var simbolos_de = {}
+
+# Indexamos los símbolos por dominio
+func _ready() -> void:
+	for dominio in dominios:
+		simbolos_de[dominio] = []
+
+	for simbolo in simbolos:
+		simbolos_de[simbolo['dominio']].append(simbolo)
+
 
 # Recibe un par de NPCs y se devuelve los matches entre
 # el 'tiene' de uno y el 'quiere' del otro, o null si no hay

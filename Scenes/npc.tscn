@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bg77gjdjv3o56"]
+[gd_scene load_steps=18 format=3 uid="uid://bg77gjdjv3o56"]
 
 [ext_resource type="Script" path="res://Scenes/npc.gd" id="1_a1xwy"]
 [ext_resource type="Texture2D" uid="uid://deakjp4t0n86v" path="res://Assets/mystic_woods_free_2.2/sprites/characters/player.png" id="1_mffem"]

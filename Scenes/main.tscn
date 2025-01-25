@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://mg2xut32mlwb"]
+[gd_scene load_steps=6 format=3 uid="uid://mg2xut32mlwb"]
 
 [ext_resource type="PackedScene" uid="uid://btjree5t4cqkr" path="res://Scenes/player.tscn" id="1_7r58n"]
-[ext_resource type="PackedScene" path="res://mapa.tscn" id="2_cbrt5"]
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_hic5o"]
+[ext_resource type="PackedScene" uid="uid://c4cruykny8epm" path="res://mapa.tscn" id="2_cbrt5"]
 [ext_resource type="AudioStream" uid="uid://dlxvn8k21y7hp" path="res://Assets/Sounds/Fondo ambient_melo.wav" id="2_e4ecg"]
 [ext_resource type="PackedScene" uid="uid://bg77gjdjv3o56" path="res://Scenes/npc.tscn" id="4_bxaog"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_hic5o")
 
 [node name="Mapa" parent="." instance=ExtResource("2_cbrt5")]
 

@@ -3,14 +3,13 @@ extends CharacterBody2D
 class_name NPC
 
 var focused = false
-
+var seleccionado = false
 var hablando = false
 var cerca = false
 
 # Simbolos que tiene y quiere
-var tiene = []
-var quiere = []
-var seleccionado = false
+var tiene = ['a','b']
+var quiere = ['c']
 
 func _process(delta: float) -> void:
 	queue_redraw()
