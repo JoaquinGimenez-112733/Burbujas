@@ -2,8 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://btjree5t4cqkr" path="res://Scenes/player.tscn" id="1_7r58n"]
 [ext_resource type="AudioStream" uid="uid://dlxvn8k21y7hp" path="res://Assets/Sounds/Fondo ambient_melo.wav" id="2_e4ecg"]
+[ext_resource type="PackedScene" uid="uid://difm4ufjlrnml" path="res://mapa.tscn" id="2_cbrt5"]
 
 [node name="Main" type="Node2D"]
+
+[node name="Mapa" parent="." instance=ExtResource("2_cbrt5")]
 
 [node name="Player" parent="." instance=ExtResource("1_7r58n")]
 position = Vector2(246, 127)
