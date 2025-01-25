@@ -1,17 +1,20 @@
 extends CharacterBody2D
-
+class_name Npc
 var focused = false
 
 var hablando = false
 var tiene = ['a', 'b']
 var quiere = ['c']
 var seleccionado = false
+var nombre : String = "Yoli"
 
+	
 func _process(delta: float) -> void:
 	queue_redraw()
 
 func _ready():
 	$AnimatedSprite2D.play("idle")
+
 
 func _on_area_tooltip_mouse_entered() -> void:
 	focused = true

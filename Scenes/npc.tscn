@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bg77gjdjv3o56"]
+[gd_scene load_steps=16 format=3 uid="uid://bg77gjdjv3o56"]
 
 [ext_resource type="Script" path="res://Scenes/npc.gd" id="1_a1xwy"]
 [ext_resource type="Texture2D" uid="uid://deakjp4t0n86v" path="res://Assets/mystic_woods_free_2.2/sprites/characters/player.png" id="1_mffem"]
@@ -66,7 +66,10 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vkp06"]
 
-[node name="NPC" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_w05b0"]
+radius = 127.063
+
+[node name="NPC" type="CharacterBody2D" groups=["Npc"]]
 position = Vector2(80, 53)
 script = ExtResource("1_a1xwy")
 
@@ -93,6 +96,12 @@ offset_top = -10.0
 offset_right = 76.0
 offset_bottom = 14.0
 metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="." groups=["Npc"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_w05b0")
+debug_color = Color(0.876982, 0.213579, 0.667437, 0.42)
 
 [connection signal="input_event" from="AreaTooltip" to="." method="_on_area_tooltip_input_event"]
 [connection signal="mouse_entered" from="AreaTooltip" to="." method="_on_area_tooltip_mouse_entered"]
