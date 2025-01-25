@@ -1,6 +1,18 @@
 extends Node
 
+# Devuelve una sublista al azar, sin repeticiones
+func pick_random(lista: Array, n: int):
+	var dup = lista.duplicate()
+	var res = []
+	for i in range(n):
+		var elem = dup.pop_at(randi_range(0, dup.size() - 1))
+		res.append(elem)
+	return res
+
 var dominios = ['naturaleza', 'arte', 'progreso']
+
+func dominios_random(n):
+	return pick_random(dominios, n)
 
 var simbolos = [
 	{
@@ -72,6 +84,12 @@ func traer(txt):
 	return null		
 
 var simbolos_de = {}
+
+func simbolos_random_de(dominio, cuantos):
+	if dominio not in simbolos_de:
+		print('ERROR: ', dominio, ' no está entre nuestros dominios')
+		return []
+	return pick_random(simbolos_de[dominio], cuantos)
 
 # Indexamos los símbolos por dominio
 func _ready() -> void:

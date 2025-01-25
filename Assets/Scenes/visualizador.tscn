@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxqiwu8bhs7tg"]
+
+[ext_resource type="Script" path="res://Assets/Scenes/visualizador.gd" id="1_rlvw8"]
+
+[node name="Visualizador" type="Node2D"]
+position = Vector2(173, 467)
+script = ExtResource("1_rlvw8")
