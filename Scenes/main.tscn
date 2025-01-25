@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnd0l3r4op6q8"]
+[gd_scene load_steps=3 format=3 uid="uid://cnd0l3r4op6q8"]
 
 [ext_resource type="PackedScene" uid="uid://btjree5t4cqkr" path="res://Scenes/player.tscn" id="1_7r58n"]
+[ext_resource type="AudioStream" uid="uid://dlxvn8k21y7hp" path="res://Assets/Sounds/Fondo ambient_melo.wav" id="2_e4ecg"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_7r58n")]
 position = Vector2(246, 127)
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_e4ecg")
+volume_db = 4.0
+autoplay = true

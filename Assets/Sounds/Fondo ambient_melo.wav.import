@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dlxvn8k21y7hp"
+path="res://.godot/imported/Fondo ambient_melo.wav-ca711210a0560e7873939295a9ffed6c.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Fondo ambient_melo.wav"
+dest_files=["res://.godot/imported/Fondo ambient_melo.wav-ca711210a0560e7873939295a9ffed6c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
