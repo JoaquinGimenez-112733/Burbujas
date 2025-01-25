@@ -18,6 +18,12 @@ config/icon="res://icon.svg"
 [autoload]
 
 Globals="*res://Scripts/globals.gd"
+Simbolos="*res://Scripts/simbolos.gd"
+Nombres="*res://Scripts/nombres.gd"
+
+[global_group]
+
+NPCs="Todos los NPCs del juego"
 
 [gui]
 

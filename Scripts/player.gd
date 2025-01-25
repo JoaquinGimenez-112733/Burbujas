@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 const SPEED = 3
 @export var is_player = false
 @export var stat1 = "ಠ_ಠ"
@@ -66,9 +68,15 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 #El shader alterna el outline segun esta variable
 	if event is InputEventMouseButton:				
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:		
-			if seleccionado == false:					
-				seleccionado = true
+			if seleccionado == false and Globals.player_selecteds < Globals.max_players_selected:
+#				SELECT
+					
+				Globals.player_selecteds += 1	
+				print(Globals.player_selecteds)				
+				self.seleccionado = true
 				$AnimatedSprite2D.material.set_shader_parameter("seleccionado", seleccionado)
-			else:
-				seleccionado = false
+			elif seleccionado == true:
+#				DESELECT
+				Globals.player_selecteds -= 1
+				self.seleccionado = false
 				$AnimatedSprite2D.material.set_shader_parameter("seleccionado", seleccionado)

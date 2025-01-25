@@ -1,8 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://bg77gjdjv3o56"]
+[gd_scene load_steps=16 format=3 uid="uid://bg77gjdjv3o56"]
 
 [ext_resource type="Script" path="res://Scenes/npc.gd" id="1_a1xwy"]
 [ext_resource type="Texture2D" uid="uid://deakjp4t0n86v" path="res://Assets/mystic_woods_free_2.2/sprites/characters/player.png" id="1_mffem"]
+[ext_resource type="Shader" path="res://Scenes/player.gdshader" id="2_w430x"]
 [ext_resource type="PackedScene" uid="uid://cw5r03j38aq20" path="res://Scenes/tooltip.tscn" id="3_8hxl5"]
+[ext_resource type="Texture2D" uid="uid://wgf0gai4f0dg" path="res://Assets/ICONOS/BURBUJA DIALOGO.png" id="4_2e2w2"]
+[ext_resource type="Script" path="res://Scenes/burbujita.gd" id="5_4l5gc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0b43v"]
+resource_local_to_scene = true
+shader = ExtResource("2_w430x")
+shader_parameter/seleccionado = null
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ffpf3"]
 atlas = ExtResource("1_mffem")
@@ -58,12 +68,16 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vkp06"]
 
-[node name="NPC" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_y2ktx"]
+radius = 49.0
+
+[node name="NPC" type="CharacterBody2D" groups=["NPCs"]]
 position = Vector2(80, 53)
 script = ExtResource("1_a1xwy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_0b43v")
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_j0xcs")
 animation = &"idle"
@@ -76,20 +90,29 @@ shape = SubResource("CapsuleShape2D_53i68")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaTooltip"]
 shape = SubResource("CapsuleShape2D_vkp06")
+debug_color = Color(1.58831e-06, 0.63803, 0.384223, 0.42)
 
 [node name="Tooltip" parent="." instance=ExtResource("3_8hxl5")]
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+offset_left = -4.0
+offset_top = -10.0
+offset_right = 76.0
+offset_bottom = 14.0
 metadata/_edit_use_anchors_ = true
 
+[node name="Influencia" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Influencia"]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_y2ktx")
+
+[node name="Globito" type="Sprite2D" parent="."]
+position = Vector2(5, -11)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_2e2w2")
+script = ExtResource("5_4l5gc")
+
+[connection signal="input_event" from="AreaTooltip" to="." method="_on_area_tooltip_input_event"]
 [connection signal="mouse_entered" from="AreaTooltip" to="." method="_on_area_tooltip_mouse_entered"]
 [connection signal="mouse_exited" from="AreaTooltip" to="." method="_on_area_tooltip_mouse_exited"]
+[connection signal="body_entered" from="Influencia" to="." method="_on_influencia_body_entered"]
+[connection signal="body_exited" from="Influencia" to="." method="_on_influencia_body_exited"]
