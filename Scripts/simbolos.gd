@@ -81,7 +81,7 @@ func traer(txt):
 	for simbolo in simbolos:
 		if simbolo['nombre'] == txt:
 			return simbolo
-	return null
+	return null		
 
 var simbolos_de = {}
 

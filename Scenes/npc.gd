@@ -8,9 +8,12 @@ var hablando = false
 var cerca = false
 
 # Simbolos que tiene y quiere
-var tiene = ['a','b']
-var quiere = ['c']
+var tiene = ['escritura','fabrica']
+var quiere = ['agua']
 
+var nombre : String = "Yoli"
+
+	
 func _process(delta: float) -> void:
 	queue_redraw()
 
@@ -18,6 +21,7 @@ func _ready():
 	$AnimatedSprite2D.play("idle")
 
 # Al ponerle el mouse encima, habla si el juagdor está cerca
+
 func _on_area_tooltip_mouse_entered() -> void:
 	focused = true
 	if cerca and not(hablando):

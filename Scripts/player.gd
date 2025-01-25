@@ -78,3 +78,8 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 				Globals.player_selecteds -= 1
 				self.seleccionado = false
 				$AnimatedSprite2D.material.set_shader_parameter("seleccionado", seleccionado)
+
+func _on_area_2d_body_entered(body) -> void:
+	if body.is_in_group("Npc"):
+		var nombre	 = body.get("nombre")
+		Globals.npcs.append(nombre)
