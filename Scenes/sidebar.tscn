@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cfit05gta61mj"]
 
-[ext_resource type="Script" path="res://Scripts/sidebar.gd" id="1_36elq"]
+[ext_resource type="Script" path="res://Scripts/sidebar.gd" id="1_i0u54"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l57nf"]
 
@@ -21,10 +21,8 @@ VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_h88kx")
 
 [node name="Sidebar" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 9
 anchor_bottom = 1.0
-grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_36elq")
 

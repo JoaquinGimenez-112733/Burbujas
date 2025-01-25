@@ -15,6 +15,9 @@ var cerca = false
 var tiene = []
 var quiere = []
 
+var nombre : String = "Yoli"
+
+	
 func _process(delta: float) -> void:
 	queue_redraw()
 
@@ -23,6 +26,7 @@ func _ready():
 	$Label.text = nombre
 
 # Al ponerle el mouse encima, habla si el juagdor está cerca
+
 func _on_area_tooltip_mouse_entered() -> void:
 	focused = true
 	if cerca and not(hablando):
