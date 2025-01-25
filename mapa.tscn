@@ -1,4 +1,4 @@
-[gd_scene load_steps=128 format=4 uid="uid://difm4ufjlrnml"]
+[gd_scene load_steps=128 format=4 uid="uid://c4cruykny8epm"]
 
 [ext_resource type="Script" path="res://Scripts/mapa.gd" id="1_57yuv"]
 [ext_resource type="Texture2D" uid="uid://cgq05wjmj126m" path="res://Assets/Godot_Autotiles_32x32.png" id="1_ywgvb"]
@@ -35147,10 +35147,10 @@ sources/43 = SubResource("TileSetAtlasSource_4jk82")
 size = Vector2(5584, 3113)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhhff"]
-size = Vector2(2876.5, 1820)
+size = Vector2(2659, 1820)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vceek"]
-size = Vector2(2589.88, 1193.25)
+size = Vector2(2515.75, 1254.5)
 
 [node name="Mapa" type="Node2D"]
 position = Vector2(17, 36)
@@ -35180,6 +35180,7 @@ tile_set = SubResource("TileSet_m07xr")
 [node name="ItemsArt" type="TileMapLayer" parent="."]
 
 [node name="AreaNat" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaNat"]
 position = Vector2(2838, 1645)
@@ -35193,31 +35194,33 @@ attenuation = 2.0
 panning_strength = 0.3
 
 [node name="AreaProgress" type="Area2D" parent="."]
+visible = false
 position = Vector2(-94, 71)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaProgress"]
-position = Vector2(4232, 904)
+position = Vector2(4293.5, 900)
 shape = SubResource("RectangleShape2D_rhhff")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AreaProgress"]
-position = Vector2(4115, 821)
+position = Vector2(4147, 885)
 stream = ExtResource("39_q471h")
-volume_db = -2.97
-max_distance = 1500.0
-attenuation = 0.500001
+volume_db = 10.896
+attenuation = 1.31951
 panning_strength = 0.0
+playback_type = 1
 
 [node name="AreaArt" type="Area2D" parent="."]
+visible = false
 position = Vector2(313, -437)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaArt"]
-position = Vector2(3906.94, 2979.62)
+position = Vector2(3943.88, 3033.25)
 shape = SubResource("RectangleShape2D_vceek")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AreaArt"]
 position = Vector2(3993, 2982)
 stream = ExtResource("41_lxban")
-volume_db = -5.8
+volume_db = 15.0
 max_distance = 1500.0
 
 [connection signal="body_entered" from="AreaNat" to="." method="_on_area_nat_body_entered"]

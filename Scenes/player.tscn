@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://btjree5t4cqkr"]
+[gd_scene load_steps=40 format=3 uid="uid://btjree5t4cqkr"]
 
 [ext_resource type="Texture2D" uid="uid://deakjp4t0n86v" path="res://Assets/mystic_woods_free_2.2/sprites/characters/player.png" id="1_q3sox"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_s0s3a"]
@@ -275,7 +275,6 @@ size = Vector2(38, 42)
 texture_filter = 1
 script = ExtResource("1_s0s3a")
 is_player = true
-footstep = ExtResource("2_7i4ci")
 
 [node name="Sidebar" parent="." instance=ExtResource("2_vlpk4")]
 offset_left = -188.0
@@ -318,8 +317,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_e6ynp")
 [node name="VBoxContainer" type="VBoxContainer" parent="Tooltip/PopupPanel"]
 offset_left = 10.0
 offset_top = 10.0
-offset_right = 70.0
-offset_bottom = 96.0
+offset_right = 52.0
+offset_bottom = 75.0
 
 [node name="Label" type="Label" parent="Tooltip/PopupPanel/VBoxContainer"]
 layout_mode = 2
