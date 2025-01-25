@@ -95,7 +95,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 					var tiene = body.get("tiene")
 					
 					var miniatura : Texture2D = texture
-					print(miniatura)
-					#Globals.miniaturas.append(miniatura)
+					print(tiene.size(), tiene.size(), quiere.size())
+					Globals.miniaturas.append(miniatura)
+					
 					var item = Item_Sidebar.new(miniatura, nombre, tiene[0], tiene[1], quiere[0])
 					Globals.items_sidebar.append(item)
