@@ -77,3 +77,25 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 				Globals.player_selecteds -= 1
 				self.seleccionado = false
 				$AnimatedSprite2D.material.set_shader_parameter("seleccionado", seleccionado)
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("NPCs"):
+		var nombre = body.get("nombre")
+		if nombre not in Globals.npcs:
+			
+			#Globals.npcs.append(nombre)
+			if body.has_node("AnimatedSprite2D"):
+				var animated_sprite = body.get_node("AnimatedSprite2D") as AnimatedSprite2D
+				if animated_sprite:
+					
+					var frame = animated_sprite.get_frame()
+					var texture = animated_sprite.sprite_frames.get_frame_texture("idle_small", 0)
+					var quiere = body.get("quiere")
+					var tiene = body.get("tiene")
+					
+					var miniatura : Texture2D = texture
+					print(miniatura)
+					#Globals.miniaturas.append(miniatura)
+					var item = Item_Sidebar.new(miniatura, nombre, tiene[0], tiene[1], quiere[0])
+					Globals.items_sidebar.append(item)

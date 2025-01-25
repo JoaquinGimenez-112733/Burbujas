@@ -28,6 +28,7 @@ Players=""
 
 [gui]
 
+theme/default_theme_scale=0.5
 theme/custom_font="res://Assets/Font/minecraftia/Minecraftia-Regular.ttf"
 
 [input]
