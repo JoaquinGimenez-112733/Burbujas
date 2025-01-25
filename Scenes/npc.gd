@@ -15,8 +15,6 @@ var cerca = false
 var tiene = []
 var quiere = []
 
-var nombre : String = "Yoli"
-
 	
 func _process(delta: float) -> void:
 	queue_redraw()
