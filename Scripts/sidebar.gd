@@ -1,12 +1,12 @@
 extends Control
-@onready var player: CharacterBody2D = $"../Player"
 @onready var v_box_container: VBoxContainer = %VBoxContainer
 
 var array_names : Array
 var sidebar_open = false
-
+var tween : Tween
 func _ready() -> void:
-	pass
+	tween = Tween.new()
+	#get_tree().root.add_child(tween)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -35,16 +35,8 @@ func _process(delta: float) -> void:
 			vbox_labels.add_child(label)
 			vbox_labels.add_child(label2)
 			hbox.add_child(vbox_labels)
-			#v_box_container.add_child(hbox)
 			margin.add_child(hbox)
 			panel.add_child(margin)
 			v_box_container.add_child(panel)
 			
 		array_names.append(npc.nombre)
-	#for npc in Globals.npcs:
-		#
-		#if npc not in array_names:		
-			#var label = Label.new()
-			#label.text = npc
-			#v_box_container.add_child(label)
-		#array_names.append(npc)

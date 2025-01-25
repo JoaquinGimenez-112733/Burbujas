@@ -1,8 +1,10 @@
-[gd_scene load_steps=40 format=3 uid="uid://btjree5t4cqkr"]
+[gd_scene load_steps=41 format=3 uid="uid://btjree5t4cqkr"]
+[gd_scene load_steps=41 format=3 uid="uid://btjree5t4cqkr"]
 
 [ext_resource type="Texture2D" uid="uid://deakjp4t0n86v" path="res://Assets/mystic_woods_free_2.2/sprites/characters/player.png" id="1_q3sox"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_s0s3a"]
-[ext_resource type="PackedScene" path="res://Scenes/sidebar.tscn" id="2_vlpk4"]
+[ext_resource type="AudioStream" uid="uid://bdupfxl7etc42" path="res://Assets/Sounds/4- Mudstep.wav" id="2_qj5ss"]
+[ext_resource type="PackedScene" uid="uid://cfit05gta61mj" path="res://Scenes/sidebar.tscn" id="2_vlpk4"]
 [ext_resource type="Shader" path="res://Scenes/player.gdshader" id="4_osldb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_46gc6"]
@@ -250,6 +252,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o8won"]
+size = Vector2(20, 25)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e6ynp"]
 content_margin_left = 10.0
@@ -268,11 +271,13 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bbxc0"]
+size = Vector2(38, 42)
 
 [node name="Player" type="CharacterBody2D" groups=["Players"]]
 texture_filter = 1
 script = ExtResource("1_s0s3a")
 is_player = true
+footstep = ExtResource("2_qj5ss")
 
 [node name="Sidebar" parent="." instance=ExtResource("2_vlpk4")]
 offset_left = -188.0
@@ -287,7 +292,7 @@ sprite_frames = SubResource("SpriteFrames_qv1bq")
 animation = &"idle_small"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 8)
+position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_o8won")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -302,9 +307,9 @@ unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
 offset_left = -10.0
-offset_top = -2.0
+offset_top = -11.0
 offset_right = 10.0
-offset_bottom = 18.0
+offset_bottom = 14.0
 mouse_filter = 1
 
 [node name="PopupPanel" type="PopupPanel" parent="Tooltip"]
@@ -332,7 +337,6 @@ layout_mode = 2
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_bbxc0")
 debug_color = Color(0.733762, 0.447586, 0.403437, 0.42)
 

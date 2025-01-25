@@ -31,3 +31,4 @@ func crear_npc(pos: Vector2):
 func _ready() -> void:
 	for i in range(100):
 		crear_npc(punto_random($Mapa/AreaNat/CollisionShape2D))
+		
