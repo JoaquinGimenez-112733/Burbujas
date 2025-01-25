@@ -1,15 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnd0l3r4op6q8"]
+[gd_scene load_steps=5 format=3 uid="uid://cnd0l3r4op6q8"]
 
 [ext_resource type="PackedScene" uid="uid://btjree5t4cqkr" path="res://Scenes/player.tscn" id="1_7r58n"]
-[ext_resource type="AudioStream" uid="uid://dlxvn8k21y7hp" path="res://Assets/Sounds/Fondo ambient_melo.wav" id="2_e4ecg"]
 [ext_resource type="PackedScene" uid="uid://difm4ufjlrnml" path="res://mapa.tscn" id="2_cbrt5"]
+[ext_resource type="AudioStream" uid="uid://dlxvn8k21y7hp" path="res://Assets/Sounds/Fondo ambient_melo.wav" id="2_e4ecg"]
+[ext_resource type="AudioStream" uid="uid://5nq06wqf1265" path="res://Assets/Sounds/pasos.wav" id="3_ai1eo"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Mapa" parent="." instance=ExtResource("2_cbrt5")]
+position = Vector2(11, 85)
 
 [node name="Player" parent="." instance=ExtResource("1_7r58n")]
 position = Vector2(246, 127)
+motion_mode = 1
+wall_min_slide_angle = 0.0977384
+footstep = ExtResource("3_ai1eo")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_e4ecg")

@@ -6,7 +6,7 @@ const SPEED = 3
 @export var stat2 = " (•◡•) /"
 @export var stat3 = "ᶘ ◕ᴥ◕ᶅ"
 @export var footstep : AudioStream
-var footsteps_array : Array = [1]
+var footsteps_array : Array = [0,3]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#$Tooltip.tooltip_text = stat1 + "\n" + stat2 + "\n" + stat3
@@ -43,7 +43,7 @@ func load_sfx(sfx_to_load):
 		%sfx_player.stream = sfx_to_load
 		
 func _on_animated_sprite_2d_frame_changed() -> void:
-	if $AnimatedSprite2D.animation == "Idle": return
+	if $AnimatedSprite2D.animation == "idle": return
 	load_sfx(footstep)
 	if $AnimatedSprite2D.frame in footsteps_array:
 		%sfx_player.play()
