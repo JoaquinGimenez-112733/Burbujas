@@ -7,8 +7,11 @@ func registrar_encuentro(npc: NPC):
 		personajes_encontrados.append(npc)
 
 
-# Recibe un par de NPCs y devuelve el outcome de la interacción
-func matchear(pj1: NPC, pj2: NPC):
+# Recibe un par de NPCs y devuelve el outcome de la 
+# interacción como una lista de acciones (para procesar después)
+func interactuar(pj1: NPC, pj2: NPC):
+	
+	var interacciones = []
 	
 	var quiere_1_y_tiene_2 = Utils.interseccion(pj1.quiere, pj2.tiene)	
 	var quiere_2_y_tiene_1 = Utils.interseccion(pj2.tiene, pj1.quiere)
@@ -23,44 +26,60 @@ func matchear(pj1: NPC, pj2: NPC):
 	# Si ambos tienen algo que el otro aborrece
 	if aborrece_1_y_tiene_2 and aborrece_2_y_tiene_1:
 		# Espantoso, se trauman ambos
-		aborrecer(pj1, pj2)
-		aborrecer(pj2, pj1)
+		interacciones.append({ 'accion': 'aborrecer', 'quien': pj1, 'a_quien': pj2})
+		interacciones.append({ 'accion': 'aborrecer', 'quien': pj2, 'a_quien': pj1})
 	
 	# Si hay aborrecer unilateral 
 	elif aborrece_1_y_tiene_2:
 		if quiere_2_y_tiene_1:
 			# Se adquieren deseos
-			asombrar(pj2, pj1)
+			interacciones.append({ 'accion': 'asombrar', 'quien': pj2, 'a_quien': pj1})
 		
 	elif len(aborrece_2_y_tiene_1):
 		if quiere_1_y_tiene_2:
 			# Se adquieren deseos
-			asombrar(pj1, pj2)
+			interacciones.append({ 'accion': 'asombrar', 'quien': pj1, 'a_quien': pj2})
 		
 	# Ninguno se aborrece
 	else:
 		
 		# Se transmiten ideas
 		if tienen_en_comun or aborrecen_en_comun:
-			conversar(pj1, pj2)
-			conversar(pj2, pj1)
+			interacciones.append({ 'accion': 'conversar', 'quien': pj1, 'a_quien': pj2})
+			interacciones.append({ 'accion': 'conversar', 'quien': pj2, 'a_quien': pj1})
 			
 		# Se transmiten aborrecencias
 		if quieren_en_comun:
-			sentenciar(pj1, pj2)
-			sentenciar(pj2, pj1)
+			interacciones.append({ 'accion': 'sentenciar', 'quien': pj1, 'a_quien': pj2})
+			interacciones.append({ 'accion': 'sentenciar', 'quien': pj2, 'a_quien': pj1})
 			
 		# Se adquieren deseos
 		if quiere_1_y_tiene_2:
-			asombrar(pj1, pj2)
+			interacciones.append({ 'accion': 'asombrar', 'quien': pj1, 'a_quien': pj2})
 		if quiere_2_y_tiene_1:
-			asombrar(pj2, pj1)
+			interacciones.append({ 'accion': 'asombrar', 'quien': pj2, 'a_quien': pj1})
 			
 		# Chance se inspiran nuevos deseos
 		if randf() < 0.5:
-			inspirar(pj1, pj2)
+			interacciones.append({ 'accion': 'inspirar', 'quien': pj1, 'a_quien': pj2})
 		if randf() < 0.5:
-			inspirar(pj2, pj1)
+			interacciones.append({ 'accion': 'inspirar', 'quien': pj2, 'a_quien': pj1})
+
+# Recibe una acción a ejecutar y la despacha al handler apropiado
+func despachar(interaccion): 
+	var de = interaccion['quien']
+	var a = interaccion['a_quien']
+	if interaccion['accion'] == 'aborrecer':
+		aborrecer(de, a)
+	if interaccion['accion'] == 'asombrar':
+		asombrar(de, a)
+	if interaccion['accion'] == 'conversar':
+		conversar(de, a)
+	if interaccion['accion'] == 'sentenciar':
+		sentenciar(de, a)
+	if interaccion['accion'] == 'inspirar':
+		inspirar(de, a)
+
 
 # aka Adquirir deseo. Le agrega a pj1.tiene todo lo de pj2.tiene que esté en pj1.quiere
 func asombrar(pj1: NPC, pj2: NPC):
