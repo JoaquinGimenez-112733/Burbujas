@@ -11,7 +11,7 @@ var seleccionado = false
 var hablando = false
 var cerca = false
 
-# Simbolos que tiene y quiere
+# Simbolos que tiene y quiere. Contiene símbolos enteros: objeto con 'imagen', 'nombre' y 'dominio'
 var tiene = []
 var quiere = []
 var aborrece = []
@@ -28,7 +28,6 @@ func _ready():
 func _on_area_tooltip_mouse_entered() -> void:
 	focused = true
 	if cerca and not(hablando):
-		print("ENCUENTROOOOOO")
 		encuentro.emit(self)
 		$Globito.desaparecer()
 		hablando = true
