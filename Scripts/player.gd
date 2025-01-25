@@ -6,7 +6,7 @@ const SPEED = 4
 @export var stat2 = "(•◡•) /"
 @export var stat3 = "ᶘ ◕ᴥ◕ᶅ"
 @export var footstep : AudioStream
-var footsteps_array : Array = [0,2]
+var footsteps_array : Array = [0,3]
 
 var seleccionado = false
 	
