@@ -8,3 +8,5 @@ const max_players_selected = 2
 var player_selecteds = 0
 
 var npcs : Array[String] = []
+var miniaturas : Array[TextureRect] = []
+var items_sidebar : Array[Item_Sidebar] = []

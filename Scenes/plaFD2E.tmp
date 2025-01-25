@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://btjree5t4cqkr"]
+[gd_scene load_steps=34 format=3 uid="uid://btjree5t4cqkr"]
 
 [ext_resource type="Texture2D" uid="uid://deakjp4t0n86v" path="res://Assets/mystic_woods_free_2.2/sprites/characters/player.png" id="1_q3sox"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_s0s3a"]
@@ -34,30 +34,6 @@ region = Rect2(192, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_drgav"]
 atlas = ExtResource("1_q3sox")
 region = Rect2(240, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ie3ng"]
-atlas = ExtResource("1_q3sox")
-region = Rect2(17, 21, 16, 22)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_te1dm"]
-atlas = ExtResource("1_q3sox")
-region = Rect2(65, 21, 16, 22)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_osf7s"]
-atlas = ExtResource("1_q3sox")
-region = Rect2(113, 21, 16, 22)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3dnjl"]
-atlas = ExtResource("1_q3sox")
-region = Rect2(161, 21, 16, 22)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2mqq3"]
-atlas = ExtResource("1_q3sox")
-region = Rect2(209, 21, 16, 22)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hxxpe"]
-atlas = ExtResource("1_q3sox")
-region = Rect2(257, 21, 16, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iduq8"]
 atlas = ExtResource("1_q3sox")
@@ -154,30 +130,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ie3ng")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_te1dm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_osf7s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3dnjl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2mqq3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hxxpe")
-}],
-"loop": true,
-"name": &"idle_small",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -275,16 +228,16 @@ script = ExtResource("1_s0s3a")
 is_player = true
 
 [node name="Sidebar" parent="." instance=ExtResource("2_vlpk4")]
-offset_left = -188.0
-offset_top = -103.0
-offset_right = -188.0
-offset_bottom = -103.0
+offset_left = -177.0
+offset_top = -94.0
+offset_right = -177.0
+offset_bottom = -94.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_46gc6")
 sprite_frames = SubResource("SpriteFrames_qv1bq")
-animation = &"idle_small"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
@@ -315,8 +268,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_e6ynp")
 [node name="VBoxContainer" type="VBoxContainer" parent="Tooltip/PopupPanel"]
 offset_left = 10.0
 offset_top = 10.0
-offset_right = 70.0
-offset_bottom = 96.0
+offset_right = 64.0
+offset_bottom = 87.0
 
 [node name="Label" type="Label" parent="Tooltip/PopupPanel/VBoxContainer"]
 layout_mode = 2

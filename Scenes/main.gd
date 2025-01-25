@@ -21,6 +21,7 @@ func crear_npc(pos: Vector2):
 	
 	var npc = npc_scene.instantiate()
 	
+	npc.nombre = Nombres.al_azar()
 	npc.tiene = tiene
 	npc.quiere = quiere
 	npc.position = pos

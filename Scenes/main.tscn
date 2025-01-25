@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://btjree5t4cqkr" path="res://Scenes/player.tscn" id="2_rail6"]
 [ext_resource type="AudioStream" uid="uid://bdupfxl7etc42" path="res://Assets/Sounds/4- Mudstep.wav" id="3_7ytfb"]
 [ext_resource type="PackedScene" uid="uid://bg77gjdjv3o56" path="res://Scenes/npc.tscn" id="4_hvw0y"]
+[ext_resource type="PackedScene" uid="uid://btjree5t4cqkr" path="res://Assets/Scenes/player.tscn" id="1_7r58n"]
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_hic5o"]
 
 [node name="Main" type="Node2D"]
 

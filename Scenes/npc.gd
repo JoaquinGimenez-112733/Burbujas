@@ -2,14 +2,18 @@ extends CharacterBody2D
 
 class_name NPC
 
+# Se dispara cuando el npc habla
+signal encuentro(npc)
+
+var nombre = ''
 var focused = false
 var seleccionado = false
 var hablando = false
 var cerca = false
 
 # Simbolos que tiene y quiere
-var tiene = ['escritura','fabrica']
-var quiere = ['agua']
+var tiene = []
+var quiere = []
 
 var nombre : String = "Yoli"
 
@@ -19,12 +23,14 @@ func _process(delta: float) -> void:
 
 func _ready():
 	$AnimatedSprite2D.play("idle")
+	$Label.text = nombre
 
 # Al ponerle el mouse encima, habla si el juagdor está cerca
 
 func _on_area_tooltip_mouse_entered() -> void:
 	focused = true
 	if cerca and not(hablando):
+		encuentro.emit(self)
 		$Globito.desaparecer()
 		hablando = true
 		await $Tooltip.decir(tiene)
@@ -41,12 +47,12 @@ func _draw():
 # Al entrar o salir del area de "Influencia", 
 # seteamos la variable `cerca`
 func _on_influencia_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"): 
+	if body is Player: 
 		cerca = true
 		$Globito.aparecer()
 		
 func _on_influencia_body_exited(body: Node2D) -> void:
-	if  body.is_in_group("Player"):
+	if body is Player:
 		cerca = false
 		$Globito.desaparecer()
 
