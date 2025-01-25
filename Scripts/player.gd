@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 const SPEED = 3
 @export var is_player = false
 @export var stat1 = "ಠ_ಠ"
