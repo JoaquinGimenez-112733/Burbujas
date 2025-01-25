@@ -78,17 +78,10 @@ shape = SubResource("CapsuleShape2D_53i68")
 shape = SubResource("CapsuleShape2D_vkp06")
 
 [node name="Tooltip" parent="." instance=ExtResource("3_8hxl5")]
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+offset_left = -4.0
+offset_top = -10.0
+offset_right = 76.0
+offset_bottom = 14.0
 metadata/_edit_use_anchors_ = true
 
 [connection signal="mouse_entered" from="AreaTooltip" to="." method="_on_area_tooltip_mouse_entered"]

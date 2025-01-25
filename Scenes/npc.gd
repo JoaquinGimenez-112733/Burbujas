@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
 var focused = false
-
-var simbolos = ['a', 'b', 'c']
+var hablando = false
+var tiene = ['a', 'b']
+var quiere = ['c']
 
 func _process(delta: float) -> void:
 	queue_redraw()
@@ -12,12 +13,14 @@ func _ready():
 
 func _on_area_tooltip_mouse_entered() -> void:
 	focused = true
-	#$Tooltip.ubicar(get_global_mouse_position())
-	$Tooltip.activar('hola', 'holi', 'holu')
+	if not(hablando):
+		hablando = true
+		await $Tooltip.decir(tiene)
+		await $Tooltip.preguntar(quiere)
+		hablando = false
 
 func _on_area_tooltip_mouse_exited() -> void:
 	focused = false
-	$Tooltip.cerrar()
 
 func _draw():
 	if focused:
