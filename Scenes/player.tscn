@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://deakjp4t0n86v" path="res://Assets/mystic_woods_free_2.2/sprites/characters/player.png" id="1_q3sox"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_s0s3a"]
-[ext_resource type="PackedScene" uid="uid://cw5r03j38aq20" path="res://Scenes/tooltip.tscn" id="4_3wn2v"]
 [ext_resource type="AudioStream" path="res://Assets/Sounds/pasos tierra.wav" id="3_5tspk"]
 [ext_resource type="Shader" path="res://Scenes/player.gdshader" id="4_osldb"]
 
@@ -246,9 +245,6 @@ zoom = Vector2(3, 3)
 unique_name_in_owner = true
 volume_db = 15.0
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [node name="Tooltip" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 3
@@ -267,8 +263,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_e6ynp")
 [node name="VBoxContainer" type="VBoxContainer" parent="Tooltip/PopupPanel"]
 offset_left = 10.0
 offset_top = 10.0
-offset_right = 70.0
-offset_bottom = 96.0
+offset_right = 64.0
+offset_bottom = 87.0
 
 [node name="Label" type="Label" parent="Tooltip/PopupPanel/VBoxContainer"]
 layout_mode = 2
@@ -288,6 +284,8 @@ position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_bbxc0")
 debug_color = Color(0.733762, 0.447586, 0.403437, 0.42)
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="mouse_entered" from="Tooltip" to="." method="_on_tooltip_mouse_entered"]
 [connection signal="mouse_exited" from="Tooltip" to="." method="_on_tooltip_mouse_exited"]
