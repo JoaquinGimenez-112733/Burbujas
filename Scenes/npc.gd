@@ -3,12 +3,14 @@ extends CharacterBody2D
 class_name NPC
 
 var focused = false
+
 var hablando = false
 var cerca = false
 
 # Simbolos que tiene y quiere
 var tiene = []
 var quiere = []
+var seleccionado = false
 
 func _process(delta: float) -> void:
 	queue_redraw()
@@ -44,3 +46,20 @@ func _on_influencia_body_exited(body: Node2D) -> void:
 	if body is Player: 
 		cerca = false
 		$Globito.desaparecer()
+
+func _on_area_tooltip_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+#En esta funcion capturamos el click sobre el personaje para enviarle el booleano "Seleccionado" al shader
+#El shader alterna el outline segun esta variable
+	if event is InputEventMouseButton:				
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:		
+			if seleccionado == false and Globals.player_selecteds < Globals.max_players_selected:
+#				SELECT
+				Globals.player_selecteds += 1
+				print(Globals.player_selecteds)					
+				self.seleccionado = true
+				$AnimatedSprite2D.material.set_shader_parameter("seleccionado", seleccionado)
+			elif seleccionado == true:
+#				DESELECT
+				Globals.player_selecteds -= 1
+				self.seleccionado = false
+				$AnimatedSprite2D.material.set_shader_parameter("seleccionado", seleccionado)
