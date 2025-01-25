@@ -3,19 +3,21 @@ extends CharacterBody2D
 const SPEED = 3
 @export var is_player = false
 @export var stat1 = "ಠ_ಠ"
-@export var stat2 = " (•◡•) /"
+@export var stat2 = "(•◡•) /"
 @export var stat3 = "ᶘ ◕ᴥ◕ᶅ"
 @export var footstep : AudioStream
 var footsteps_array : Array = [1]
+
+var seleccionado = false
+	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#$Tooltip.tooltip_text = stat1 + "\n" + stat2 + "\n" + stat3
 	pass
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
+#Mapeo de controles, para el movimiento del personaje
 	if Input.is_action_pressed("UP"):
 		position.y -= 1 * SPEED
 		$AnimatedSprite2D.play("walk_up")
@@ -38,12 +40,15 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.play("idle")		
 
 func load_sfx(sfx_to_load):
+
 	if %sfx_player.stream != sfx_to_load:
 		%sfx_player.stop()
 		%sfx_player.stream = sfx_to_load
 		
 func _on_animated_sprite_2d_frame_changed() -> void:
-	if $AnimatedSprite2D.animation == "Idle": return
+#Acá hacemos que se ejecute el sonido de los pasos de el personaje
+#Tiene que ser en el primer frame, si el personaje está idle no ejecuta el sonido
+	if $AnimatedSprite2D.animation == "idle": return
 	load_sfx(footstep)
 	if $AnimatedSprite2D.frame in footsteps_array:
 		%sfx_player.play()
@@ -51,6 +56,7 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 
 
 func _on_tooltip_mouse_entered() -> void:
+#Tooltip para cuando hoveriemos el personaje
 	$Tooltip/PopupPanel/VBoxContainer/Label.text = stat1
 	$Tooltip/PopupPanel/VBoxContainer/Label2.text = stat2
 	$Tooltip/PopupPanel/VBoxContainer/Label3.text = stat3
@@ -58,4 +64,18 @@ func _on_tooltip_mouse_entered() -> void:
 
 
 func _on_tooltip_mouse_exited() -> void:
+#Escondemos el tooltip cuando salimos de hover
 	$Tooltip/PopupPanel.hide()
+
+
+func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:	
+#En esta funcion capturamos el click sobre el personaje para enviarle el booleano "Seleccionado" al shader
+#El shader alterna el outline segun esta variable
+	if event is InputEventMouseButton:				
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:		
+			if seleccionado == false:					
+				seleccionado = true
+				$AnimatedSprite2D.material.set_shader_parameter("seleccionado", seleccionado)
+			else:
+				seleccionado = false
+				$AnimatedSprite2D.material.set_shader_parameter("seleccionado", seleccionado)
