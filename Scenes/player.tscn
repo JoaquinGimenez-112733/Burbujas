@@ -203,10 +203,11 @@ script = ExtResource("1_s0s3a")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_qv1bq")
 animation = &"walk_h"
-frame_progress = 0.307841
+frame_progress = 0.964737
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_o8won")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
