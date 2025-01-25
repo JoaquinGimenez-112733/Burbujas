@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://deakjp4t0n86v" path="res://Assets/mystic_woods_free_2.2/sprites/characters/player.png" id="1_q3sox"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_s0s3a"]
 [ext_resource type="AudioStream" uid="uid://chbl1eudi1eap" path="res://Assets/Sounds/pasos tierra.wav" id="3_5tspk"]
+[ext_resource type="PackedScene" uid="uid://cw5r03j38aq20" path="res://Scenes/tooltip.tscn" id="4_3wn2v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5x1xo"]
 atlas = ExtResource("1_q3sox")
@@ -197,23 +198,8 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o8won"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e6ynp"]
-content_margin_left = 10.0
-content_margin_top = 10.0
-content_margin_right = 10.0
-content_margin_bottom = 10.0
-bg_color = Color(0.783704, 0.540817, 0.305253, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_blend = true
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [node name="Player" type="CharacterBody2D"]
+texture_filter = 1
 script = ExtResource("1_s0s3a")
 is_player = true
 footstep = ExtResource("3_5tspk")
@@ -234,38 +220,8 @@ zoom = Vector2(3, 3)
 unique_name_in_owner = true
 volume_db = 15.0
 
-[node name="Tooltip" type="Control" parent="."]
-unique_name_in_owner = true
-layout_mode = 3
-anchors_preset = 0
-offset_left = -10.0
-offset_top = -2.0
-offset_right = 10.0
-offset_bottom = 18.0
-mouse_filter = 1
+[node name="Tooltip" parent="." instance=ExtResource("4_3wn2v")]
 
-[node name="PopupPanel" type="PopupPanel" parent="Tooltip"]
-position = Vector2i(540, 200)
-size = Vector2i(62, 85)
-theme_override_styles/panel = SubResource("StyleBoxFlat_e6ynp")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Tooltip/PopupPanel"]
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 64.0
-offset_bottom = 87.0
-
-[node name="Label" type="Label" parent="Tooltip/PopupPanel/VBoxContainer"]
-layout_mode = 2
-text = "ALLOO"
-
-[node name="Label2" type="Label" parent="Tooltip/PopupPanel/VBoxContainer"]
-layout_mode = 2
-text = "BBB"
-
-[node name="Label3" type="Label" parent="Tooltip/PopupPanel/VBoxContainer"]
-layout_mode = 2
-
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
-[connection signal="mouse_entered" from="Tooltip" to="." method="_on_tooltip_mouse_entered"]
-[connection signal="mouse_exited" from="Tooltip" to="." method="_on_tooltip_mouse_exited"]
