@@ -1,12 +1,5 @@
 extends Node
 
-var personajes_encontrados = []
-
-func registrar_encuentro(npc: NPC):
-	if not(npc in personajes_encontrados):
-		personajes_encontrados.append(npc)
-
-
 # Recibe un par de NPCs y devuelve el outcome de la 
 # interacción como una lista de acciones (para procesar después)
 func interactuar(pj1: NPC, pj2: NPC):
@@ -77,6 +70,8 @@ func interactuar(pj1: NPC, pj2: NPC):
 			interacciones.append({ 'accion': 'inspirar', 'quien': pj1, 'a_quien': pj2})
 		if randf() < 0.5:
 			interacciones.append({ 'accion': 'inspirar', 'quien': pj2, 'a_quien': pj1})
+			
+	return interacciones
 
 # Recibe una acción a ejecutar y la despacha al handler apropiado
 func despachar(interaccion): 
@@ -95,19 +90,31 @@ func despachar(interaccion):
 	if interaccion['accion']	 == 'alienar':
 		alienar(de, a)
 
+
 func alienar(pj1: NPC, pj2: NPC):
 	var opuestos = Utils.interseccion(pj1.quiere, pj2.aborrece)
-	var opuesto = Utils.pick_random(opuestos, 1)
+	var opuesto = Utils.pick_random(opuestos, 1)[0]
 	pj1.quiere.erase(opuesto)
 	pj1.aborrece.append(opuesto)
 	pj2.quiere.erase(opuesto)
 	pj2.aborrece.append(opuesto)
+	
+	print('Alienar de ', pj1.nombre, ' con ', pj2.nombre, '... invirtiendo [', opuesto['nombre'], ']...')
+	
+	# Ver si se pueden paralelizar
+	await pj1.on_alienar(opuesto)
+	await pj2.on_alienar(opuesto)
 	
 	
 # aka Adquirir deseo. Le agrega a pj1.tiene todo lo de pj2.tiene que esté en pj1.quiere
 func asombrar(pj1: NPC, pj2: NPC):
 	var deseado = Utils.interseccion(pj1.quiere, pj2.tiene)
 	pj2.tiene.append_array(deseado)
+	
+	print(pj1.nombre, ' adquiriendo [', deseado[0]['nombre'] ,'] por asombro con ', pj2.nombre, '...')
+	
+	await pj1.on_asombrar(deseado)
+
 
 # Le agrega a pj1.aborrece algo random no repetido de pj2.tiene
 func aborrecer(pj1: NPC, pj2: NPC):
@@ -116,6 +123,11 @@ func aborrecer(pj1: NPC, pj2: NPC):
 		algo_de_2 = Utils.pick_random(pj2.tiene, 1)
 	pj1.aborrece.append_array(algo_de_2)
 	
+	print(pj1.nombre, ' aborreciendo [', algo_de_2[0]['nombre'] ,'] por aborrecemiento de ', pj2.nombre, '...')
+	
+	await pj1.on_aborrecer(algo_de_2[0])
+	
+
 # aka Adquirir ideas. Le agrega a pj1.tiene algo random no repetido de pj2.tiene
 func conversar(pj1: NPC, pj2: NPC):
 	
@@ -130,6 +142,10 @@ func conversar(pj1: NPC, pj2: NPC):
 		
 	# Le agregamos a pj1 lo que hayamos encontrado
 	pj1.tiene.append_array(algo_de_2)
+	
+	print(pj1.nombre, ' adquiriendo [', algo_de_2[0]['nombre'], '] de ', pj2.nombre, ' por conversación...')
+	
+	await pj1.on_conversar(algo_de_2[0])
 	
 
 # aka Adquirir aborrecencia. Le agrega a pj1.aborrece algo random no repetido de pj2.aborrece
@@ -146,6 +162,10 @@ func sentenciar(pj1: NPC, pj2: NPC):
 		
 	# Le agregamos a pj1 lo que hayamos encontrado
 	pj1.aborrece.append_array(algo_de_2)
+	
+	print(pj1.nombre, ' aborreciendo [', algo_de_2[0]['nombre'], '] por andar sentenciando con ', pj2.nombre, '...')
+	
+	await pj1.on_sentenciar(algo_de_2[0])
 
 
 # Le agrega a pj1.quiere algo random no repetido de pj2.quiere
@@ -161,3 +181,7 @@ func inspirar(pj1: NPC, pj2: NPC):
 		
 	# Le agregamos a pj1 lo que hayamos encontrado
 	pj1.quiere.append_array(algo_de_2)
+	
+	print(pj1.nombre, ' queriendo [', algo_de_2[0]['nombre'], '] inspirado por ', pj2.nombre)
+	
+	await pj1.on_inspirar(algo_de_2[0])

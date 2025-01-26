@@ -11,6 +11,8 @@ var focused = false
 var seleccionado = false
 var hablando = false
 var cerca = false
+var interactuando = false
+
 var guid : String
 
 @export var DEBUG = true
@@ -57,14 +59,13 @@ func _process(delta: float) -> void:
 	if yendo_a:
 		nav.target_position = yendo_a.position
 		if position.distance_to(yendo_a.position) < 50:
+			encuentro.emit(self, yendo_a)
 			yendo_a = null
-			#interactuar()
 	
-	var direction = (nav.get_next_path_position() - global_position).normalized()
-	
-	velocity = direction * speed
-
-	move_and_slide()
+	if not(interactuando) and not(cerca):
+		var direction = (nav.get_next_path_position() - global_position).normalized()
+		velocity = direction * speed
+		move_and_slide()
 
 
 # Al ponerle el mouse encima, habla si el juagdor está cerca
@@ -73,7 +74,6 @@ func _on_area_tooltip_mouse_entered() -> void:
 	$FocusCircle.material.set_shader_parameter("active", true)
 	focused = true
 	if cerca and not(hablando):
-		encuentro.emit(self)
 		$Globito.desaparecer()
 		hablando = true
 		await $Tooltip.decir(tiene)
@@ -158,4 +158,24 @@ func pasear():
 func ir_a(otro_npc):
 	yendo_a = otro_npc
 
+
+## Interacciones visuales
+
+func on_alienar(que):
+	await $Tooltip.decir([que])
+	
+func on_asombrar(que):
+	await $Tooltip.decir([que])
+	
+func on_aborrecer(que):
+	await $Tooltip.decir([que])
+	
+func on_conversar(que):
+	await $Tooltip.decir([que])
+	
+func on_sentenciar(que):
+	await $Tooltip.decir([que])
+	
+func on_inspirar(que):
+	await $Tooltip.decir([que])
 	
