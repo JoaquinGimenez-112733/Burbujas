@@ -16,6 +16,7 @@ func _ready():
 	$Test/Testita.quiere = Simbolos.simbolos_random_de('progreso', 1)
 	$Test/Testita.aborrece = Simbolos.simbolos_random_de('arte', 1)
 	$Test/Testita.encuentro.connect(manejar_encuentro)
+	$Test/Testita.update_registro.connect(updatear_sidebar)
 	
 	$Test/Testito.nombre = 'Testito'
 	$Test/Testito.dominio = 'progreso'
@@ -23,6 +24,7 @@ func _ready():
 	$Test/Testito.quiere = Simbolos.simbolos_random_de('arte', 1)
 	$Test/Testito.aborrece = Simbolos.simbolos_random_de('naturaleza', 1)
 	$Test/Testito.encuentro.connect(manejar_encuentro)
+	$Test/Testito.update_registro.connect(updatear_sidebar)
 	
 	$Test/Testite.nombre = 'Testite'
 	$Test/Testite.dominio = 'arte'
@@ -30,6 +32,7 @@ func _ready():
 	$Test/Testite.quiere = Simbolos.simbolos_random_de('naturaleza', 1)
 	$Test/Testite.aborrece = Simbolos.simbolos_random_de('progreso', 1)
 	$Test/Testite.encuentro.connect(manejar_encuentro)
+	$Test/Testite.update_registro.connect(updatear_sidebar)
 	
 
 func crear_npc():
@@ -55,9 +58,13 @@ func crear_npc():
 	npc.dominio = dominio_propio
 	
 	npc.encuentro.connect(manejar_encuentro)
+	npc.update_registro.connect(updatear_sidebar)
 	
 	add_child(npc)
 
+func updatear_sidebar():
+	print('@main updateando sidebar')
+	$Sidebar.update()
 
 func manejar_encuentro(npc1: NPC, npc2: NPC):
 	print('@main manejando encuentro entre ', npc1.nombre, ' y ', npc2.nombre)
@@ -73,10 +80,12 @@ func manejar_encuentro(npc1: NPC, npc2: NPC):
 	npc1.interactuando = false
 	npc2.interactuando = false
 	
+	print('@main updateando sidebar luego de interacción')
+	$Sidebar.update()
+	
 
 var npcs = 0
 func _on_spawn_timeout():
-	print("Spawneando NPC")
 	if npcs < 60:
 		crear_npc()
 		npcs += 1

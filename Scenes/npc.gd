@@ -4,6 +4,7 @@ class_name NPC
 
 # Se dispara cuando el npc habla
 signal encuentro(npc)
+signal update_registro
 
 var nombre = ''
 var dominio = ''
@@ -116,23 +117,12 @@ func _on_area_tooltip_input_event(viewport: Node, event: InputEvent, shape_idx: 
 #En esta funcion capturamos el click sobre el personaje para enviarle el booleano "Seleccionado" al shader
 #El shader alterna el outline segun esta variable
 	if event is InputEventMouseMotion:
-		var nombre = self.nombre
-		if nombre not in Globals.npcs:
-			var animated_sprite = $AnimatedSprite2D
-			if animated_sprite:
-				var frame = animated_sprite.get_frame()
-				var texture = animated_sprite.sprite_frames.get_frame_texture("idle_small", 0)
-				var quiere = self.quiere
-				var tiene = self.tiene		
-				var aborrece = self.aborrece		
-				var miniatura : Texture2D = texture
-				Globals.miniaturas.append(miniatura)
-				var array_total : Array
-				array_total.append_array(quiere)
-				array_total.append_array(tiene)
-				var item = Item_Sidebar.new(miniatura, nombre, quiere, tiene, aborrece, self.global_position, guid)
-				Globals.items_sidebar.append(item)
-				Globals.npcs.append(self)
+		if self not in Globals.npcs:
+			print("Primer hover en ", nombre)
+			Globals.npcs.append(self)
+			print("Updateado Globals.npcs a ", Globals.npcs)
+			update_registro.emit()
+			
 	if event is InputEventMouseButton:				
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:		
 			if seleccionado == false and Globals.player_selecteds < Globals.max_players_selected:
@@ -166,10 +156,11 @@ func ir_a(otro_npc):
 
 
 ## Interacciones visuales
+# Emociones disponibles: 'aburrimiento', 'amor', 'interrogación' o 'irritación'
 
 func on_alienar(que):
 	await $Tooltip.decir([que])
-	await $Tooltip.emocionar("amor")
+	await $Tooltip.emocionar("interrogacion")
 	
 func on_asombrar(que):
 	await $Tooltip.decir([que])
@@ -177,7 +168,7 @@ func on_asombrar(que):
 	
 func on_aborrecer(que):
 	await $Tooltip.decir([que])
-	await $Tooltip.emocionar("amor")
+	await $Tooltip.emocionar("irritación")
 	
 func on_conversar(que):
 	await $Tooltip.decir([que])
@@ -185,7 +176,7 @@ func on_conversar(que):
 	
 func on_sentenciar(que):
 	await $Tooltip.decir([que])
-	await $Tooltip.emocionar("amor")
+	await $Tooltip.emocionar("aburrimiento")
 	
 func on_inspirar(que):
 	await $Tooltip.decir([que])

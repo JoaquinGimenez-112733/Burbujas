@@ -9,5 +9,3 @@ var player_selecteds = 0
 
 var selected_npc : NPC = null
 var npcs : Array[NPC] = []
-var miniaturas : Array[TextureRect] = []
-var items_sidebar : Array[Item_Sidebar] = []

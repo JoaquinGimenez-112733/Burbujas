@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://mg2xut32mlwb"]
+[gd_scene load_steps=7 format=3 uid="uid://mg2xut32mlwb"]
 
 [ext_resource type="PackedScene" uid="uid://b5bpmvtay1abt" path="res://Scenes/player.tscn" id="1_7r58n"]
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_hic5o"]
 [ext_resource type="PackedScene" uid="uid://c4cruykny8epm" path="res://mapa.tscn" id="2_cbrt5"]
-[ext_resource type="PackedScene" uid="uid://ddwxxc6jibxqd" path="res://Scenes/hud.tscn" id="4_bljcr"]
+[ext_resource type="PackedScene" path="res://Scenes/hud.tscn" id="4_bljcr"]
 [ext_resource type="PackedScene" uid="uid://bg77gjdjv3o56" path="res://Scenes/npc.tscn" id="4_fm08h"]
+[ext_resource type="PackedScene" uid="uid://cfit05gta61mj" path="res://Scenes/sidebar.tscn" id="6_iexp8"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_hic5o")
@@ -12,7 +13,6 @@ script = ExtResource("1_hic5o")
 [node name="Mapa" parent="." instance=ExtResource("2_cbrt5")]
 
 [node name="Player" parent="." instance=ExtResource("1_7r58n")]
-visible = false
 position = Vector2(246, 127)
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
@@ -24,6 +24,7 @@ autostart = true
 [node name="HUD" parent="." instance=ExtResource("4_bljcr")]
 
 [node name="StartTimer" type="Timer" parent="."]
+
 [node name="Test" type="Node" parent="."]
 
 [node name="Testito" parent="Test" instance=ExtResource("4_fm08h")]
@@ -34,6 +35,8 @@ position = Vector2(336, 99)
 
 [node name="Testite" parent="Test" instance=ExtResource("4_fm08h")]
 position = Vector2(623, 106)
+
+[node name="Sidebar" parent="." instance=ExtResource("6_iexp8")]
 
 [connection signal="timeout" from="Spawn" to="." method="_on_spawn_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
