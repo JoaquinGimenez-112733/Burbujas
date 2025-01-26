@@ -55,6 +55,9 @@ func _process(delta: float) -> void:
 	queue_redraw()
 	$Label.text = nombre
 	
+	# Sincronizamos el shader outline con la variable `seleccionado`
+	$AnimatedSprite2D.material.set_shader_parameter("seleccionado", seleccionado)
+	
 	if yendo_a:
 		nav.target_position = yendo_a.position
 		if position.distance_to(yendo_a.position) < 50:
@@ -86,10 +89,12 @@ func _on_area_tooltip_mouse_exited() -> void:
 
 func _draw():
 	#if focused:
-		##draw_circle(Vector2.ZERO, 30, Color.WHITE, false)
+		#draw_circle(Vector2.ZERO, 30, Color.WHITE, false)
 		#$FocusCircle.material.set_shader_parameter("active", true)
 	#else:
 		#$FocusCircle.material.set_shader_parameter("active", false)
+	if yendo_a:
+		draw_line(Vector2.ZERO, to_local(yendo_a.position), Color.WHITE)
 	if DEBUG:
 		draw_line(Vector2.ZERO, to_local(nav.target_position), Color.GREEN)
 		draw_circle(to_local(nav.target_position), 20, Color.GREEN)
@@ -112,9 +117,9 @@ func _on_area_tooltip_input_event(viewport: Node, event: InputEvent, shape_idx: 
 #El shader alterna el outline segun esta variable
 	if event is InputEventMouseMotion:
 		var nombre = self.nombre
-		if nombre not in Globals.npcs:				
+		if nombre not in Globals.npcs:
 			var animated_sprite = $AnimatedSprite2D
-			if animated_sprite:						
+			if animated_sprite:
 				var frame = animated_sprite.get_frame()
 				var texture = animated_sprite.sprite_frames.get_frame_texture("idle_small", 0)
 				var quiere = self.quiere
@@ -133,16 +138,16 @@ func _on_area_tooltip_input_event(viewport: Node, event: InputEvent, shape_idx: 
 #				SELECT
 				Globals.selected_npc = self				
 				seleccionado = true
-				$AnimatedSprite2D.material.set_shader_parameter("seleccionado", seleccionado)
 				$clickpersonaje.play()
 			elif seleccionado == true:
 #				DESELECT
 				Globals.player_selecteds -= 1
 				seleccionado = false
-				$AnimatedSprite2D.material.set_shader_parameter("seleccionado", seleccionado)
 			else :
 					$clickrebote.play()
-					
+			
+func deshighlight():
+	seleccionado = false		
 
 func _on_target_paseo_timeout() -> void:
 	pasear()
@@ -163,19 +168,25 @@ func ir_a(otro_npc):
 
 func on_alienar(que):
 	await $Tooltip.decir([que])
+	await $Tooltip.emocionar("amor")
 	
 func on_asombrar(que):
 	await $Tooltip.decir([que])
+	await $Tooltip.emocionar("amor")
 	
 func on_aborrecer(que):
 	await $Tooltip.decir([que])
+	await $Tooltip.emocionar("amor")
 	
 func on_conversar(que):
 	await $Tooltip.decir([que])
+	await $Tooltip.emocionar("amor")
 	
 func on_sentenciar(que):
 	await $Tooltip.decir([que])
+	await $Tooltip.emocionar("amor")
 	
 func on_inspirar(que):
 	await $Tooltip.decir([que])
+	await $Tooltip.emocionar("amor")
 	

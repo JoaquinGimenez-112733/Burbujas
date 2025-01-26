@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cw5r03j38aq20"]
+[gd_scene load_steps=32 format=3 uid="uid://cw5r03j38aq20"]
 
 [ext_resource type="Script" path="res://Scenes/tooltip.gd" id="1_4a54v"]
 [ext_resource type="Texture2D" uid="uid://wgf0gai4f0dg" path="res://Assets/ICONOS/BURBUJA DIALOGO.png" id="2_d4hfr"]
@@ -6,6 +6,173 @@
 [ext_resource type="AudioStream" uid="uid://6sp228posxln" path="res://Assets/Sounds/buburjatiene.wav" id="4_bj25y"]
 [ext_resource type="AudioStream" uid="uid://b2ansdejd7usm" path="res://Assets/Sounds/buburjaquiere.wav" id="5_xcsvc"]
 [ext_resource type="AudioStream" uid="uid://c5pr0643e7koq" path="res://Assets/Sounds/buburjaborrece.wav" id="6_8bm0u"]
+[ext_resource type="Texture2D" uid="uid://c38n4bqmb31rp" path="res://Assets/ICONOS/ABURRIMIENTO.png" id="7_102w3"]
+[ext_resource type="Texture2D" uid="uid://dj1g6ef5oqqss" path="res://Assets/ICONOS/AMOR.png" id="8_x2d21"]
+[ext_resource type="Texture2D" uid="uid://dl2f3col5cgb6" path="res://Assets/ICONOS/INTERROGACION.png" id="9_6a8au"]
+[ext_resource type="Texture2D" uid="uid://cie0f2q4c24f6" path="res://Assets/ICONOS/IRRITACION.png" id="10_obo6j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xx1y"]
+atlas = ExtResource("7_102w3")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwiys"]
+atlas = ExtResource("7_102w3")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hm6xt"]
+atlas = ExtResource("7_102w3")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4aavp"]
+atlas = ExtResource("7_102w3")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oktg"]
+atlas = ExtResource("7_102w3")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3w5n"]
+atlas = ExtResource("8_x2d21")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvdhj"]
+atlas = ExtResource("8_x2d21")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34ufv"]
+atlas = ExtResource("8_x2d21")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i78ci"]
+atlas = ExtResource("8_x2d21")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37ttj"]
+atlas = ExtResource("8_x2d21")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q07ms"]
+atlas = ExtResource("9_6a8au")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwwgo"]
+atlas = ExtResource("9_6a8au")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4iq7"]
+atlas = ExtResource("9_6a8au")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gblm"]
+atlas = ExtResource("9_6a8au")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etb2x"]
+atlas = ExtResource("9_6a8au")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76xtm"]
+atlas = ExtResource("10_obo6j")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqnwq"]
+atlas = ExtResource("10_obo6j")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85bxq"]
+atlas = ExtResource("10_obo6j")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgb37"]
+atlas = ExtResource("10_obo6j")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xahlj"]
+atlas = ExtResource("10_obo6j")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ln3wb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xx1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwiys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hm6xt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4aavp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oktg")
+}],
+"loop": true,
+"name": &"aburrimiento",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3w5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvdhj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34ufv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i78ci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37ttj")
+}],
+"loop": true,
+"name": &"amor",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q07ms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwwgo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4iq7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gblm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etb2x")
+}],
+"loop": true,
+"name": &"interrogación",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76xtm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqnwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85bxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgb37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xahlj")
+}],
+"loop": true,
+"name": &"irritación",
+"speed": 5.0
+}]
 
 [node name="Tooltip" type="Control"]
 modulate = Color(1, 1, 1, 0)
@@ -27,6 +194,7 @@ texture_filter = 1
 texture = ExtResource("2_d4hfr")
 
 [node name="Imagen" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
 
 [node name="?" type="Sprite2D" parent="."]
@@ -50,3 +218,8 @@ stream = ExtResource("5_xcsvc")
 
 [node name="burbujaborrece" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_8bm0u")
+
+[node name="Emocion" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_ln3wb")
+animation = &"irritación"

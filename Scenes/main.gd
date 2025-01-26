@@ -64,7 +64,7 @@ func manejar_encuentro(npc1: NPC, npc2: NPC):
 	for interaccion in resultado: 
 		await Interacciones.despachar(interaccion)
 	await get_tree().create_timer(2).timeout
-		
+	
 	npc1.interactuando = false
 	npc2.interactuando = false
 	

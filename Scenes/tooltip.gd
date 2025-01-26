@@ -6,7 +6,7 @@ var gotitas = preload('res://Assets/ICONOS/AGUA2.png')
 
 func decir(cosas):
 	for cosa in cosas: 
-		
+		$Imagen.show()
 		# Si es un símbolo
 		if 'imagen' in cosa:
 			$Imagen.texture = cosa['imagen']
@@ -20,9 +20,11 @@ func decir(cosas):
 		await tween_entrada()
 		await get_tree().create_timer(0.4).timeout
 		await tween_salida()
+		$Imagen.hide()
 
 func preguntar(cosas):
 	for cosa in cosas: 
+		$Imagen.show()
 		
 		if 'imagen' in cosa:
 			$"¿".visible = true
@@ -36,7 +38,17 @@ func preguntar(cosas):
 		await tween_salida()
 		$"¿".visible = false
 		$"?".visible = false
+		$Imagen.hide()
 		
+# `emocion` puede ser 'aburrimiento', 'amor', 'interrogación' o 'irritación'
+func emocionar(emocion):
+	$Emocion.show()
+	await tween_entrada()
+	$Emocion.play(emocion)
+	await get_tree().create_timer(0.8).timeout
+	await tween_salida()
+	$Emocion.hide()
+	
 # Transiciona la entrada del tooltip... su opacidad y posición
 func tween_entrada():
 	modulate = Color.TRANSPARENT

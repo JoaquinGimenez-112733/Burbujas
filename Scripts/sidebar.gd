@@ -60,4 +60,5 @@ func _process(delta: float) -> void:
 func _on_button_pressed(npc_clickeado):
 	if Globals.selected_npc:
 		Globals.selected_npc.ir_a(npc_clickeado)
+		Globals.selected_npc.deshighlight()
 		Globals.selected_npc = null

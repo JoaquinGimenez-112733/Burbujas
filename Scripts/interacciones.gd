@@ -7,7 +7,7 @@ func interactuar(pj1: NPC, pj2: NPC):
 	var interacciones = []
 	
 	var quiere_1_y_tiene_2 = Utils.interseccion(pj1.quiere, pj2.tiene)	
-	var quiere_2_y_tiene_1 = Utils.interseccion(pj2.tiene, pj1.quiere)
+	var quiere_2_y_tiene_1 = Utils.interseccion(pj2.quiere, pj1.tiene)
 	
 	var aborrece_1_y_tiene_2 = Utils.interseccion(pj1.aborrece, pj2.tiene)
 	var aborrece_2_y_tiene_1 = Utils.interseccion(pj2.aborrece, pj1.tiene)
@@ -88,25 +88,22 @@ func despachar(interaccion):
 	if interaccion['accion'] == 'inspirar':
 		inspirar(de, a)
 	if interaccion['accion']	 == 'alienar':
-		print('Despachando alienar con ', de, ' y ', a)
 		alienar(de, a)
 
 
 func alienar(pj1: NPC, pj2: NPC):
-	var opuestos = Utils.interseccion(pj1.quiere, pj2.aborrece)
-	var opuesto = Utils.pick_random(opuestos, 1)[0]
+	var opuestos = Utils.interseccion(pj1.aborrece, pj2.quiere)
+	var opuesto = Utils.pick_uno(opuestos)
 	pj1.quiere.erase(opuesto)
 	pj1.aborrece.append(opuesto)
 	pj2.quiere.erase(opuesto)
 	pj2.aborrece.append(opuesto)
 	
-	print('Alienar de ', pj1.nombre, ' con ', pj2.nombre, '... invirtiendo [', opuesto['nombre'], ']...')
-	
 	# Ver si se pueden paralelizar
 	await pj1.on_alienar(opuesto)
 	await pj2.on_alienar(opuesto)
 	
-	
+
 # aka Adquirir deseo. Le agrega a pj1.tiene todo lo de pj2.tiene que esté en pj1.quiere
 func asombrar(pj1: NPC, pj2: NPC):
 	var deseado = Utils.interseccion(pj1.quiere, pj2.tiene)
