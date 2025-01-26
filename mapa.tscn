@@ -54380,10 +54380,8 @@ volume_db = 5.591
 max_distance = 3000.0
 
 [node name="Markers" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
 
 [node name="Naturaleza" type="Node2D" parent="Markers"]
-metadata/_edit_lock_ = true
 
 [node name="Uno" type="Marker2D" parent="Markers/Naturaleza"]
 position = Vector2(194, 99)
@@ -54398,7 +54396,6 @@ position = Vector2(405, 2451)
 position = Vector2(2124, 2749)
 
 [node name="Progreso" type="Node2D" parent="Markers"]
-metadata/_edit_lock_ = true
 
 [node name="Uno" type="Marker2D" parent="Markers/Progreso"]
 position = Vector2(4339, 921)
@@ -54413,7 +54410,6 @@ position = Vector2(4890, 409)
 position = Vector2(4018, 1695)
 
 [node name="Arte" type="Node2D" parent="Markers"]
-metadata/_edit_lock_ = true
 
 [node name="Uno" type="Marker2D" parent="Markers/Arte"]
 position = Vector2(2363, 512)

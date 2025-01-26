@@ -56,6 +56,9 @@ func _process(delta: float) -> void:
 	
 	if yendo_a:
 		nav.target_position = yendo_a.position
+		if position.distance_to(yendo_a.position) < 50:
+			yendo_a = null
+			#interactuar()
 	
 	var direction = (nav.get_next_path_position() - global_position).normalized()
 	
