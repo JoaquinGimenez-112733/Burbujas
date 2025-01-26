@@ -41,6 +41,7 @@ func _on_area_tooltip_mouse_exited() -> void:
 func _draw():
 	if focused:
 		draw_circle(Vector2.ZERO, 30, Color.WHITE, false)
+		
 
 # Al entrar o salir del area de "Influencia", 
 # seteamos la variable `cerca`
