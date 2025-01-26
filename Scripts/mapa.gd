@@ -11,11 +11,6 @@ func _ready() -> void:
 		Navegacion.points['arte'].append(marker.position)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _on_area_progress_body_entered(body: Node2D) -> void:
 	if body is Player:
 		$AreaProgress/AudioStreamPlayer2D.play()
