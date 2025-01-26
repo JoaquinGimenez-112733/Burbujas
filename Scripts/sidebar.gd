@@ -3,7 +3,7 @@ extends Control
 
 var array_names : Array
 var sidebar_open = false
-var selected_npcs = []
+var selected_npcs : Array[NPC] = []
 
 func _process(delta: float) -> void:
 	for npc in Globals.items_sidebar:
@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
 			for n in Globals.npcs:
 				if n.guid == npc.guid:							
 					portrait_button.pressed.connect(Callable(self,"_on_button_pressed").bind(n))
+					break
 			hbox.add_child(portrait_button)
 			
 			var vbox_labels = VBoxContainer.new()
@@ -34,8 +35,12 @@ func _process(delta: float) -> void:
 			index += 1
 			for imagen in npc.array_imagenes:
 				
-				var textureButton = TextureButton.new()				
-				textureButton.pressed.connect(Callable(self,"_on_button_pressed").bind(npc.nombre))
+				var textureButton = TextureButton.new()
+				for n in Globals.npcs:
+					if n.guid == npc.guid:							
+						textureButton.pressed.connect(Callable(self,"_on_button_pressed").bind(n))
+						break				
+				#textureButton.pressed.connect(Callable(self,"_on_button_pressed").bind(npc.nombre))
 				textureButton.stretch_mode = TextureButton.STRETCH_KEEP_CENTERED
 				textureButton.texture_normal = imagen.imagen
 				var texture1 = TextureRect.new()
@@ -57,10 +62,7 @@ func _on_button_pressed(npc):
 	if selected_npcs.size() < 2:
 		selected_npcs.append(npc)
 		if selected_npcs.size() == 2:
+			print(selected_npcs[0].global_position)
 			selected_npcs[1].set_move(selected_npcs[0].global_position)
-			#for n in Globals.npcs:
-				#if n.guid == selected_npcs[1].guid:
-					#n.set_move(selected_npcs[0].global_position)
-			#print(selected_npcs[1].nombre + " " + str(selected_npcs[1].pos) + " va hacia " + selected_npcs[0].nombre + " " + str(selected_npcs[0].pos))
 			selected_npcs.clear()
-	
+	print(selected_npcs.size())

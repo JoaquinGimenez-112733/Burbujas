@@ -279,9 +279,9 @@ is_player = true
 footstep = ExtResource("2_p1s3q")
 
 [node name="Sidebar" parent="." instance=ExtResource("2_vlpk4")]
-offset_left = -188.0
+offset_left = -187.0
 offset_top = -103.0
-offset_right = -188.0
+offset_right = -187.0
 offset_bottom = -103.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

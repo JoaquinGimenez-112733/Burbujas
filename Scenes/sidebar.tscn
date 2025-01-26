@@ -30,7 +30,8 @@ script = ExtResource("1_36elq")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 clip_contents = false
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 offset_right = 131.0
 offset_bottom = 128.0
 theme = SubResource("Theme_mk0fe")
