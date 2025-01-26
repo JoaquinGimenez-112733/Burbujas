@@ -174,8 +174,15 @@ volume_db = 4.457
 stream = ExtResource("8_d7g12")
 volume_db = 7.924
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+
+[node name="TargetPaseo" type="Timer" parent="."]
+wait_time = 45.0
+
 [connection signal="input_event" from="AreaTooltip" to="." method="_on_area_tooltip_input_event"]
 [connection signal="mouse_entered" from="AreaTooltip" to="." method="_on_area_tooltip_mouse_entered"]
 [connection signal="mouse_exited" from="AreaTooltip" to="." method="_on_area_tooltip_mouse_exited"]
 [connection signal="body_entered" from="Influencia" to="." method="_on_influencia_body_entered"]
 [connection signal="body_exited" from="Influencia" to="." method="_on_influencia_body_exited"]
+[connection signal="timeout" from="TargetPaseo" to="." method="_on_target_paseo_timeout"]
