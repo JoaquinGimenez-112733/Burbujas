@@ -19,6 +19,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	var mouse = get_global_mouse_position()
+	print(mouse)
+	zoom()
+	
 	if Input.is_action_just_pressed("ui_left"):		
 		sidebar_control()
 		
@@ -90,8 +94,15 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 					
 func sidebar_control():
 	if sidebar_open:
-		create_tween().tween_property($Sidebar, "modulate", Color.TRANSPARENT, 0.6)
+		create_tween().tween_property($Sidebar.get_node("%VBoxContainer"), "modulate", Color.TRANSPARENT, 0.6)
 		sidebar_open = false
 	elif !sidebar_open:
-		create_tween().tween_property($Sidebar, "modulate", Color.WHITE, 0.6)
+		create_tween().tween_property($Sidebar.get_node("%VBoxContainer"), "modulate", Color.WHITE, 0.6)
 		sidebar_open = true
+func zoom():
+	if Input.is_action_pressed("ZOOM_IN"):
+		$Camera2D.zoom.x += 0.1
+		$Camera2D.zoom.y += 0.1
+	if Input.is_action_pressed("ZOOM_OUT"):
+		$Camera2D.zoom.x -= 0.1
+		$Camera2D.zoom.y -= 0.1

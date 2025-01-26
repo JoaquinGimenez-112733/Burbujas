@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 @onready var v_box_container: VBoxContainer = %VBoxContainer
 
 var array_names : Array
@@ -62,7 +62,6 @@ func _on_button_pressed(npc):
 	if selected_npcs.size() < 2:
 		selected_npcs.append(npc)
 		if selected_npcs.size() == 2:
-			print(selected_npcs[0].global_position)
 			selected_npcs[1].set_move(selected_npcs[0].global_position)
 			selected_npcs.clear()
 	print(selected_npcs.size())

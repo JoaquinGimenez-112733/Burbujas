@@ -2,7 +2,7 @@ extends Control
 
 # Desplazamiento del tooltip al entrar
 const dy = 20
-var gotitas = preload('res://Assets/ICONOS/AGUA.png')
+var gotitas = preload('res://Assets/ICONOS/AGUA2.png')
 
 func decir(cosas):
 	for cosa in cosas: 

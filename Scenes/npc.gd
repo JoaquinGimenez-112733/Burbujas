@@ -13,7 +13,7 @@ var hablando = false
 var cerca = false
 var guid : String
 
-var DEBUG = true
+@export var DEBUG = true
 var COLORES = {
 	'arte': Color.RED,
 	'progreso': Color.AQUA,

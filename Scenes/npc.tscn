@@ -123,6 +123,7 @@ radius = 49.0
 [node name="NPC" type="CharacterBody2D" groups=["NPCs"]]
 position = Vector2(80, 53)
 script = ExtResource("1_a1xwy")
+DEBUG = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
