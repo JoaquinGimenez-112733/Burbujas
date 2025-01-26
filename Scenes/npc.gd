@@ -65,8 +65,15 @@ func _on_area_tooltip_input_event(viewport: Node, event: InputEvent, shape_idx: 
 				print(Globals.player_selecteds)					
 				self.seleccionado = true
 				$AnimatedSprite2D.material.set_shader_parameter("seleccionado", seleccionado)
+				$clickpersonaje.play()
 			elif seleccionado == true:
 #				DESELECT
 				Globals.player_selecteds -= 1
 				self.seleccionado = false
 				$AnimatedSprite2D.material.set_shader_parameter("seleccionado", seleccionado)
+			else :
+					$clickrebote.play()
+			
+		
+					
+				
