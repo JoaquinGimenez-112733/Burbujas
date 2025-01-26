@@ -57,7 +57,7 @@ func _process(delta: float) -> void:
 	
 	if yendo_a:
 		nav.target_position = yendo_a.position
-		if position.distance_to(yendo_a.position) < 100:
+		if position.distance_to(yendo_a.position) < 50:
 			print("@npc ENCUENTRO!!!")
 			encuentro.emit(self, yendo_a)
 			yendo_a = null

@@ -88,6 +88,7 @@ func despachar(interaccion):
 	if interaccion['accion'] == 'inspirar':
 		inspirar(de, a)
 	if interaccion['accion']	 == 'alienar':
+		print('Despachando alienar con ', de, ' y ', a)
 		alienar(de, a)
 
 
