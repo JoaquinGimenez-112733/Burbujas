@@ -24,8 +24,16 @@ func crear_npc():
 	npc.position = Navegacion.point_propio(dominio_propio)
 	npc.dominio = dominio_propio
 	
+	npc.encuentro.connect(manejar_encuentro)
+	
 	add_child(npc)
 
+
+func manejar_encuentro(npc1: NPC, npc2: NPC):
+	print('@main manejando encuentro entre ', npc1.nombre, ' y ', npc2.nombre)
+	var resultado = Interacciones.interactuar(npc1, npc2)
+	for interaccion in resultado: 
+		await Interacciones.despachar(interaccion)
 
 var npcs = 0
 func _on_spawn_timeout() -> void:

@@ -57,8 +57,8 @@ func _process(delta: float) -> void:
 	if yendo_a:
 		nav.target_position = yendo_a.position
 		if position.distance_to(yendo_a.position) < 50:
+			encuentro.emit(self, yendo_a)
 			yendo_a = null
-			#interactuar()
 	
 	var direction = (nav.get_next_path_position() - global_position).normalized()
 	
@@ -72,7 +72,6 @@ func _process(delta: float) -> void:
 func _on_area_tooltip_mouse_entered() -> void:
 	focused = true
 	if cerca and not(hablando):
-		encuentro.emit(self)
 		$Globito.desaparecer()
 		hablando = true
 		await $Tooltip.decir(tiene)
