@@ -13,6 +13,7 @@ func decir(cosas):
 		
 		# Si es un txt
 		else:
+			print('Labeltexteando ', cosa)
 			$Label.text = cosa
 		
 		$burbujatiene.play()

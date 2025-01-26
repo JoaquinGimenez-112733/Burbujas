@@ -113,7 +113,7 @@ func asombrar(pj1: NPC, pj2: NPC):
 	
 	print(pj1.nombre, ' adquiriendo [', deseado[0]['nombre'] ,'] por asombro con ', pj2.nombre, '...')
 	
-	await pj1.on_asombrar(deseado)
+	await pj1.on_asombrar(deseado[0])
 
 
 # Le agrega a pj1.aborrece algo random no repetido de pj2.tiene

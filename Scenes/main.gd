@@ -1,7 +1,31 @@
 extends Node2D
 
-
 const npc_scene = preload('res://Scenes/npc.tscn')
+
+# Solo para testear:
+func _ready():
+
+	$Test/Testita.nombre = 'Testita'
+	$Test/Testita.dominio = 'naturaleza'
+	$Test/Testita.tiene = Simbolos.simbolos_random_de('naturaleza', 2)
+	$Test/Testita.quiere = Simbolos.simbolos_random_de('progreso', 1)
+	$Test/Testita.aborrece = Simbolos.simbolos_random_de('arte', 1)
+	$Test/Testita.encuentro.connect(manejar_encuentro)
+	
+	$Test/Testito.nombre = 'Testito'
+	$Test/Testito.dominio = 'progreso'
+	$Test/Testito.tiene = Simbolos.simbolos_random_de('progreso', 2)
+	$Test/Testito.quiere = Simbolos.simbolos_random_de('arte', 1)
+	$Test/Testito.aborrece = Simbolos.simbolos_random_de('naturaleza', 1)
+	$Test/Testito.encuentro.connect(manejar_encuentro)
+	
+	$Test/Testite.nombre = 'Testite'
+	$Test/Testite.dominio = 'arte'
+	$Test/Testite.tiene = Simbolos.simbolos_random_de('arte', 2)
+	$Test/Testite.quiere = Simbolos.simbolos_random_de('naturaleza', 1)
+	$Test/Testite.aborrece = Simbolos.simbolos_random_de('progreso', 1)
+	$Test/Testite.encuentro.connect(manejar_encuentro)
+	
 
 func crear_npc():
 	#Generamos al azar un dominio propio, uno target y uno aborrecido
@@ -21,6 +45,7 @@ func crear_npc():
 	npc.nombre = Nombres.al_azar()
 	npc.tiene = tiene
 	npc.quiere = quiere
+	npc.aborrece = aborrece
 	npc.position = Navegacion.point_propio(dominio_propio)
 	npc.dominio = dominio_propio
 	

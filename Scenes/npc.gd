@@ -35,8 +35,8 @@ var vel = Vector2(0,0)
 func _ready() -> void:
 	guid = generate_guid()
 	$AnimatedSprite2D.play("idle")
-	$Label.text = nombre
-	pasear()
+	if dominio:
+		pasear()
 	
 func generate_guid():
 	var random_part = str(randi(), "_",randi()) 
@@ -52,13 +52,13 @@ var aborrece = []
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 
 func _process(delta: float) -> void:
-	#if move:
-	#	move_npc(delta)
 	queue_redraw()
+	$Label.text = nombre
 	
 	if yendo_a:
 		nav.target_position = yendo_a.position
-		if position.distance_to(yendo_a.position) < 50:
+		if position.distance_to(yendo_a.position) < 100:
+			print("@npc ENCUENTRO!!!")
 			encuentro.emit(self, yendo_a)
 			yendo_a = null
 	
