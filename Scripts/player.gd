@@ -20,7 +20,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var mouse = get_global_mouse_position()
+	
 	zoom()
+	$Camera2D.zoom = Vector2(Globals.player_camera_zoom, Globals.player_camera_zoom)
 	
 	if Input.is_action_just_pressed("ui_left"):		
 		sidebar_control()
@@ -101,8 +103,8 @@ func sidebar_control():
 
 func zoom():
 	if Input.is_action_pressed("ZOOM_IN"):
-		$Camera2D.zoom.x += 0.1
-		$Camera2D.zoom.y += 0.1
+		Globals.player_camera_zoom.x += 0.1
+		Globals.player_camera_zoom.y += 0.1
 	if Input.is_action_pressed("ZOOM_OUT"):
-		$Camera2D.zoom.x -= 0.1
-		$Camera2D.zoom.y -= 0.1
+		Globals.player_camera_zoom.x -= 0.1
+		Globals.player_camera_zoom.y -= 0.1

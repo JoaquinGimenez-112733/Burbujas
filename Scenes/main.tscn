@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://mg2xut32mlwb"]
+[gd_scene load_steps=6 format=3 uid="uid://mg2xut32mlwb"]
 
 [ext_resource type="PackedScene" uid="uid://b5bpmvtay1abt" path="res://Scenes/player.tscn" id="1_7r58n"]
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_hic5o"]
@@ -24,6 +24,7 @@ autostart = true
 [node name="HUD" parent="." instance=ExtResource("4_bljcr")]
 
 [node name="StartTimer" type="Timer" parent="."]
+
 [node name="Test" type="Node" parent="."]
 
 [node name="Testito" parent="Test" instance=ExtResource("4_fm08h")]

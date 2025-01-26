@@ -13,14 +13,14 @@ func show_message(text):
 
 
 func _on_start_button_pressed():
+	
+	$Titulo.hide()
 	$Message.show()
 	$MessageTimer.start()
 	$StartButton.hide()
-	
 	$Sprite2D.hide()
 	$Sprite2D2.hide()
-	show_message(\" \")
-
+	show_message(\"Tu personaje habita un mundo dividido en el cual cada persona pertenece a burbujas de pensamiento basadas en valores, emociones e ideas. Tu eres el unico dispuesto a arreglarlo pero recuerda… No puedes hacerlo solo! Para resolver el conflicto, debes interactuar con los personajes y generar conexiones entre estos para romper sus sistemas individuales de creencias.\")
 
 func _on_message_timer_timeout():
 	$Message.hide()
@@ -37,46 +37,54 @@ script = SubResource("GDScript_tve33")
 
 [node name="StartButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 453.0
-offset_top = 515.0
-offset_right = 679.0
-offset_bottom = 583.0
+offset_left = 475.5
+offset_top = 515.5
+offset_right = 701.5
+offset_bottom = 589.5
 theme_override_colors/font_hover_color = Color(0.345098, 0.92549, 0.356863, 1)
 theme_override_fonts/font = ExtResource("1_2aivt")
 theme_override_font_sizes/font_size = 40
 text = "START"
 autowrap_mode = 2
 
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 8.0
+
 [node name="Message" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 45.0
-offset_top = 88.0
-offset_right = 1090.0
-offset_bottom = 165.0
+visible = false
+layout_mode = 2
+offset_left = 157.0
+offset_top = 62.0
+offset_right = 1022.0
+offset_bottom = 154.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_2aivt")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 30
 text = "POP THE WORLD!"
 horizontal_alignment = 1
 vertical_alignment = 3
 autowrap_mode = 2
 
-[node name="MessageTimer" type="Timer" parent="."]
-wait_time = 8.0
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(570, 300)
+position = Vector2(587.5, 317.5)
 scale = Vector2(5.27083, 4.96875)
 texture = ExtResource("2_ilnmq")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(563, 287)
+position = Vector2(582.5, 301.5)
 scale = Vector2(0.302632, 0.2575)
 texture = ExtResource("3_oc4rd")
+
+[node name="Titulo" type="Label" parent="."]
+layout_mode = 0
+offset_left = 361.0
+offset_top = 62.0
+offset_right = 811.0
+offset_bottom = 150.0
+theme_override_fonts/font = ExtResource("1_2aivt")
+theme_override_font_sizes/font_size = 50
+text = "POP THE WORLD!"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

@@ -6,6 +6,9 @@ func new_game():
 	print("New game")
 	$Spawn.start()
 	$Player.show()
+	var t = create_tween() 
+	t.set_trans(Tween.TRANS_EXPO)
+	t.tween_property(Globals, 'player_camera_zoom', 4, 2)
 	
 # Solo para testear:
 func _ready():
