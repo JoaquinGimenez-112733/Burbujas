@@ -70,6 +70,7 @@ func _process(delta: float) -> void:
 # Al ponerle el mouse encima, habla si el juagdor está cerca
 
 func _on_area_tooltip_mouse_entered() -> void:
+	$FocusCircle.material.set_shader_parameter("active", true)
 	focused = true
 	if cerca and not(hablando):
 		encuentro.emit(self)
@@ -80,11 +81,15 @@ func _on_area_tooltip_mouse_entered() -> void:
 		hablando = false
 
 func _on_area_tooltip_mouse_exited() -> void:
+	$FocusCircle.material.set_shader_parameter("active", false)
 	focused = false
 
 func _draw():
-	if focused:
-		draw_circle(Vector2.ZERO, 30, Color.WHITE, false)
+	#if focused:
+		##draw_circle(Vector2.ZERO, 30, Color.WHITE, false)
+		#$FocusCircle.material.set_shader_parameter("active", true)
+	#else:
+		#$FocusCircle.material.set_shader_parameter("active", false)
 	if DEBUG:
 		draw_line(Vector2.ZERO, to_local(nav.target_position), Color.GREEN)
 		draw_circle(to_local(nav.target_position), 20, Color.GREEN)
