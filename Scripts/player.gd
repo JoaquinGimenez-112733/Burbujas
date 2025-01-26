@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
 		
 	velocity = Input.get_vector("LEFT", "RIGHT","UP","DOWN")*SPEED
 	move_and_slide()
+	
 #Mapeo de controles, para el movimiento del personaje
 	if Input.is_action_pressed("UP"):
 		$AnimatedSprite2D.play("walk_up")

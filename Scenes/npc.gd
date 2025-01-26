@@ -14,11 +14,15 @@ var cerca = false
 var guid : String
 
 var DEBUG = true
+var COLORES = {
+	'arte': Color.RED,
+	'progreso': Color.AQUA,
+	'naturaleza': Color.WEB_PURPLE
+}
 
 # La velocidad de desplazamiento
-var speed = 100
+var speed = 60
 
-const SPEED = 50
 var move = false
 var dest : Vector2
 var vel = Vector2(0,0)
@@ -50,7 +54,7 @@ func _process(delta: float) -> void:
 	var direction = (nav.get_next_path_position() - global_position).normalized()
 	
 	velocity = direction * speed
-	
+
 	move_and_slide()
 
 
@@ -73,8 +77,10 @@ func _draw():
 	if focused:
 		draw_circle(Vector2.ZERO, 30, Color.WHITE, false)
 	if DEBUG:
-		draw_line(Vector2.ZERO, to_local(nav.get_next_path_position()), Color.GREEN)
-
+		draw_line(Vector2.ZERO, to_local(nav.target_position), Color.GREEN)
+		draw_circle(to_local(nav.target_position), 20, Color.GREEN)
+		draw_circle(Vector2.ZERO, 45, COLORES[dominio])
+		
 # Al entrar o salir del area de "Influencia", 
 # seteamos la variable `cerca`
 func _on_influencia_body_entered(body: Node2D) -> void:
@@ -130,33 +136,32 @@ func _on_target_paseo_timeout() -> void:
 	pasear()
 	
 func pasear():
-	if randf() < 0.8:
+	if randf() < 0.6:
 		nav.target_position = Navegacion.point_propio(dominio)
 	else: 
 		nav.target_position = Navegacion.point_extranjero(dominio)
-		
 					
 				
-func move_npc(delta):
-
-	var angle = get_angle_to(dest)
-	vel.x = cos(angle)
-	vel.y = sin(angle)
-	self.global_position +=  vel * SPEED * delta
-	
-	var distance = global_position.distance_to(dest)
-	for n in Globals.npcs:
-		if n.guid == self.guid:
-			print(self.global_position)
-			n = self
-			break
-	if distance <= 20.0:
-		move = false
-
-	
-func set_move(destination):
-	print(self.global_position)
-	dest.x = destination.x - 20
-	dest.y = destination.y - 20
-	move = true
-	
+#func move_npc(delta):
+#
+	#var angle = get_angle_to(dest)
+	#vel.x = cos(angle)
+	#vel.y = sin(angle)
+	#self.global_position +=  vel * speed * delta
+	#
+	#var distance = global_position.distance_to(dest)
+	#for n in Globals.npcs:
+		#if n.guid == self.guid:
+			#print(self.global_position)
+			#n = self
+			#break
+	#if distance <= 20.0:
+		#move = false
+#
+	#
+#func set_move(destination):
+	#print(self.global_position)
+	#dest.x = destination.x - 20
+	#dest.y = destination.y - 20
+	#move = true
+	#

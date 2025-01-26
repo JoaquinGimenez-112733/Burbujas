@@ -26,7 +26,9 @@ func crear_npc():
 	
 	add_child(npc)
 
-func _ready() -> void:
-	for i in range(60):
+
+var npcs = 0
+func _on_spawn_timeout() -> void:
+	if npcs < 60:
 		crear_npc()
-		
+		npcs += 1
