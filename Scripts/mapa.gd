@@ -17,25 +17,31 @@ func _process(delta: float) -> void:
 
 
 func _on_area_progress_body_entered(body: Node2D) -> void:
-	$AreaProgress/AudioStreamPlayer2D.play()
+	if body is Player:
+		$AreaProgress/AudioStreamPlayer2D.play()
 	
 func _on_area_progress_body_exited(body: Node2D) -> void:
-	$AreaProgress/AudioStreamPlayer2D.stop()
+	if body is Player:
+		$AreaProgress/AudioStreamPlayer2D.stop()
 
 
 func _on_area_art_body_entered(body: Node2D) -> void:
-	$AreaArt/AudioStreamPlayer2D.play()
+	if body is Player:
+		$AreaArt/AudioStreamPlayer2D.play()
 	
 func _on_area_art_body_exited(body: Node2D) -> void:
-	$AreaArt/AudioStreamPlayer2D.stop()
+	if body is Player:
+		$AreaArt/AudioStreamPlayer2D.stop()
 
 
 func _on_area_nat_body_entered(body: Node2D) -> void:
-	$AreaNat/AudioGlobalNat.play()
+	if body is Player:
+		$AreaNat/AudioGlobalNat.play()
 
 
 func _on_area_nat_body_exited(body: Node2D) -> void:
-	$AreaNat/AudioGlobalNat.stop()
+	if body is Player:
+		$AreaNat/AudioGlobalNat.stop()
 
 
 func _on_area_art_area_entered(area: Area2D) -> void:
