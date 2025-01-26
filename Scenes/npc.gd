@@ -118,13 +118,14 @@ func _on_area_tooltip_input_event(viewport: Node, event: InputEvent, shape_idx: 
 				var frame = animated_sprite.get_frame()
 				var texture = animated_sprite.sprite_frames.get_frame_texture("idle_small", 0)
 				var quiere = self.quiere
-				var tiene = self.tiene				
+				var tiene = self.tiene		
+				var aborrece = self.aborrece		
 				var miniatura : Texture2D = texture
 				Globals.miniaturas.append(miniatura)
 				var array_total : Array
 				array_total.append_array(quiere)
 				array_total.append_array(tiene)
-				var item = Item_Sidebar.new(miniatura, nombre, array_total, self.global_position, guid)
+				var item = Item_Sidebar.new(miniatura, nombre, quiere, tiene, aborrece, self.global_position, guid)
 				Globals.items_sidebar.append(item)
 				Globals.npcs.append(self)
 	if event is InputEventMouseButton:				

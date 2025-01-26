@@ -20,9 +20,8 @@ VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_6na3n")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_h88kx")
 
 [node name="Sidebar" type="CanvasLayer"]
-offset = Vector2(20, 0)
 scale = Vector2(2, 2)
-transform = Transform2D(2, 0, 0, 2, 20, 0)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
 script = ExtResource("1_36elq")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
