@@ -338,8 +338,6 @@ shape = SubResource("RectangleShape2D_bbxc0")
 debug_color = Color(0.733762, 0.447586, 0.403437, 0.42)
 
 [node name="Sidebar" parent="." instance=ExtResource("2_vlpk4")]
-scale = Vector2(2, 2)
-transform = Transform2D(2, 0, 0, 2, 0, 0)
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
