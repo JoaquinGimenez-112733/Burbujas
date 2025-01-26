@@ -27,62 +27,62 @@ func dominios_random(n):
 var simbolos = [
 	{
 		'nombre': 'agua',
-		'imagen': preload('res://Assets/ICONOS/AGUA.png'),
+		'imagen': preload('res://Assets/ICONOS/AGUA2.png'),
 		'dominio': 'naturaleza',
 	},
 	{
 		'nombre': 'escritura',
-		'imagen': preload('res://Assets/ICONOS/ESCRITURA.png'),
+		'imagen': preload('res://Assets/ICONOS/ESCRITURA2.png'),
 		'dominio': 'arte',
 	},
 	{
 		'nombre': 'fabrica',
-		'imagen': preload('res://Assets/ICONOS/FABRICA.png'),
+		'imagen': preload('res://Assets/ICONOS/FABRICA2.png'),
 		'dominio': 'progreso',
 	},
 	{
 		'nombre': 'foco',
-		'imagen': preload('res://Assets/ICONOS/FOCO.png'),
+		'imagen': preload('res://Assets/ICONOS/FOCO2.png'),
 		'dominio': 'progreso',
 	},
 	{
 		'nombre': 'fotografía',
-		'imagen': preload('res://Assets/ICONOS/FOTOGRAFIA.png'),
+		'imagen': preload('res://Assets/ICONOS/FOTOGRAFIA2.png'),
 		'dominio': 'progreso',
 	},
 	{
 		'nombre': 'gas',
-		'imagen': preload('res://Assets/ICONOS/GAS.png'),
+		'imagen': preload('res://Assets/ICONOS/GAS2.png'),
 		'dominio': 'progreso',
 	},
 	{
 		'nombre': 'cultivo',
-		'imagen': preload('res://Assets/ICONOS/MANOS.png'),
+		'imagen': preload('res://Assets/ICONOS/MANOS2.png'),
 		'dominio': 'naturaleza',
 	},
 	{
 		'nombre': 'montañas',
-		'imagen': preload('res://Assets/ICONOS/MONTAÑAS.png'),
+		'imagen': preload('res://Assets/ICONOS/MONTAÑAS2.png'),
 		'dominio': 'naturaleza',
 	},
 	{
 		'nombre': 'pintura',
-		'imagen': preload('res://Assets/ICONOS/PALETA.png'),
+		'imagen': preload('res://Assets/ICONOS/PALETA2.png'),
 		'dominio': 'arte',
 	},
 	{
 		'nombre': 'plantita',
-		'imagen': preload('res://Assets/ICONOS/PLANTITA.png'),
+		'imagen': preload('res://Assets/ICONOS/PLANTITA2.png'),
 		'dominio': 'naturaleza',
 	},
 	{
 		'nombre': 'teatro',
-		'imagen': preload('res://Assets/ICONOS/TEATRO.png'),
+		'imagen': preload('res://Assets/ICONOS/TEATRO2.png'),
 		'dominio': 'arte',
 	},
 	{
 		'nombre': 'torre',
-		'imagen': preload('res://Assets/ICONOS/TORRE ENERGIA.png'),
+		'imagen': preload('res://Assets/ICONOS/TORRE ENERGIA2.png'),
 		'dominio': 'progreso',
 	},
 ]

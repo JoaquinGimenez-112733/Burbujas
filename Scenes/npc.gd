@@ -58,6 +58,27 @@ func _on_influencia_body_exited(body: Node2D) -> void:
 func _on_area_tooltip_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 #En esta funcion capturamos el click sobre el personaje para enviarle el booleano "Seleccionado" al shader
 #El shader alterna el outline segun esta variable
+	if event is InputEventMouseMotion:
+		print(viewport)
+		#if body.is_in_group("NPCs"):
+			#var nombre = body.get("nombre")
+			#if nombre not in Globals.npcs:				
+				#if body.has_node("AnimatedSprite2D"):
+					#var animated_sprite = body.get_node("AnimatedSprite2D") as AnimatedSprite2D
+					#if animated_sprite:						
+						#var frame = animated_sprite.get_frame()
+						#var texture = animated_sprite.sprite_frames.get_frame_texture("idle_small", 0)
+						#var quiere = body.get("quiere")
+						#var tiene = body.get("tiene")
+						#
+						#var miniatura : Texture2D = texture
+						#print(tiene.size(), tiene.size(), quiere.size())
+						#Globals.miniaturas.append(miniatura)
+						#var array_total : Array[CompressedTexture2D]
+						#array_total.append_array(quiere)
+						#array_total.append_array(tiene)
+						#var item = Item_Sidebar.new(miniatura, nombre, array_total)
+						#Globals.items_sidebar.append(item)
 	if event is InputEventMouseButton:				
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:		
 			if seleccionado == false and Globals.player_selecteds < Globals.max_players_selected:
