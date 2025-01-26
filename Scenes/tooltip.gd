@@ -15,8 +15,9 @@ func decir(cosas):
 		else:
 			$Label.text = cosa
 		
+		$burbujatiene.play()
 		await tween_entrada()
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(0.4).timeout
 		await tween_salida()
 
 func preguntar(cosas):
@@ -28,8 +29,9 @@ func preguntar(cosas):
 			$"?".visible = true
 		else:	
 			$Label.text = '¿' + cosa + '?'
+		$burbujaquiere.play()
 		await tween_entrada()
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(0.4).timeout
 		await tween_salida()
 		$"¿".visible = false
 		$"?".visible = false
@@ -40,8 +42,9 @@ func tween_entrada():
 	position = Vector2(position.x, -20)
 	var t = create_tween()
 	t.set_ease(Tween.EASE_OUT)
-	t.set_trans(Tween.TRANS_QUAD)
-	t.tween_property(self, "modulate", Color.WHITE, 0.3)
+	t.set_trans(Tween.TRANS_EXPO)
+	t.set_parallel()
+	t.tween_property(self, "modulate", Color.WHITE, 0.2)
 	t.tween_property(self, "position", Vector2(position.x, position.y - dy), 0.3)
 	return t.finished
 

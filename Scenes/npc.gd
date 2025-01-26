@@ -55,6 +55,7 @@ func _on_area_tooltip_mouse_exited() -> void:
 func _draw():
 	if focused:
 		draw_circle(Vector2.ZERO, 30, Color.WHITE, false)
+		
 
 # Al entrar o salir del area de "Influencia", 
 # seteamos la variable `cerca`
@@ -96,11 +97,18 @@ func _on_area_tooltip_input_event(viewport: Node, event: InputEvent, shape_idx: 
 				print(Globals.player_selecteds)					
 				self.seleccionado = true
 				$AnimatedSprite2D.material.set_shader_parameter("seleccionado", seleccionado)
+				$clickpersonaje.play()
 			elif seleccionado == true:
 #				DESELECT
 				Globals.player_selecteds -= 1
 				self.seleccionado = false
 				$AnimatedSprite2D.material.set_shader_parameter("seleccionado", seleccionado)
+			else :
+					$clickrebote.play()
+			
+		
+					
+				
 func move_npc(delta):
 
 	var angle = get_angle_to(dest)

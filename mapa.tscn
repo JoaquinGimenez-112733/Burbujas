@@ -1,4 +1,4 @@
-[gd_scene load_steps=206 format=4 uid="uid://c4cruykny8epm"]
+[gd_scene load_steps=208 format=4 uid="uid://c4cruykny8epm"]
 
 [ext_resource type="Script" path="res://Scripts/mapa.gd" id="1_57yuv"]
 [ext_resource type="Texture2D" uid="uid://cgq05wjmj126m" path="res://Assets/Godot_Autotiles_32x32.png" id="1_ywgvb"]
@@ -54227,13 +54227,43 @@ sources/22 = SubResource("TileSetAtlasSource_kc2wm")
 sources/23 = SubResource("TileSetAtlasSource_ilttl")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ed6uy"]
-size = Vector2(5584, 3191.5)
+size = Vector2(2803, 3191.5)
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_3kmls"]
+clip_count = 1
+clip_0/name = &"Sound Naturaleza"
+clip_0/stream = ExtResource("39_2qxwg")
+clip_0/auto_advance = 0
+_transitions = {
+Vector2i(0, 0): {
+"fade_beats": 1,
+"fade_mode": 3,
+"filler_clip": 0,
+"from_time": 0,
+"to_time": 1,
+"use_filler_clip": true
+}
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhhff"]
-size = Vector2(2659, 1820)
+size = Vector2(2722, 1640)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vceek"]
-size = Vector2(2515.75, 1254.5)
+size = Vector2(2784, 1503.5)
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_lcg28"]
+clip_count = 1
+clip_0/name = &"Sound Artistas"
+clip_0/stream = ExtResource("41_lxban")
+clip_0/auto_advance = 0
+_transitions = {
+Vector2i(0, -1): {
+"fade_beats": 1,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+}
+}
 
 [node name="Mapa" type="Node2D"]
 position = Vector2(17, 36)
@@ -54269,26 +54299,24 @@ tile_map_data = PackedByteArray("AACFABkAAAAEAIgAAACFABoAAAAEAIkAAACGABkAAAAFAIg
 tile_set = SubResource("TileSet_5osmp")
 
 [node name="AreaNat" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaNat"]
-position = Vector2(2838, 1605.75)
+position = Vector2(1447.5, 1605.75)
 shape = SubResource("RectangleShape2D_ed6uy")
 
 [node name="AudioGlobalNat" type="AudioStreamPlayer2D" parent="AreaNat"]
 position = Vector2(1001, 1734)
-stream = ExtResource("39_2qxwg")
-volume_db = 9.905
+stream = SubResource("AudioStreamInteractive_3kmls")
+volume_db = 5.448
 max_distance = 2500.0
 attenuation = 2.0
 panning_strength = 0.3
 
 [node name="AreaProgress" type="Area2D" parent="."]
-visible = false
 position = Vector2(-94, 71)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaProgress"]
-position = Vector2(4293.5, 900)
+position = Vector2(4325, 829)
 shape = SubResource("RectangleShape2D_rhhff")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AreaProgress"]
@@ -54296,27 +54324,26 @@ position = Vector2(4147, 885)
 stream = ExtResource("39_q471h")
 volume_db = 5.945
 max_distance = 1500.0
-attenuation = 0.500001
 panning_strength = 0.0
 playback_type = 1
 
 [node name="AreaArt" type="Area2D" parent="."]
-visible = false
 position = Vector2(313, -437)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaArt"]
-position = Vector2(3943.88, 3033.25)
+position = Vector2(3928, 2908.75)
 shape = SubResource("RectangleShape2D_vceek")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AreaArt"]
-position = Vector2(3993, 2982)
-stream = ExtResource("41_lxban")
-volume_db = 4.105
-max_distance = 1500.0
+position = Vector2(3718, 2994)
+stream = SubResource("AudioStreamInteractive_lcg28")
+volume_db = 1.134
+max_distance = 2500.0
+attenuation = 2.0
 
 [connection signal="body_entered" from="AreaNat" to="." method="_on_area_nat_body_entered"]
 [connection signal="body_exited" from="AreaNat" to="." method="_on_area_nat_body_exited"]
 [connection signal="body_entered" from="AreaProgress" to="." method="_on_area_progress_body_entered"]
 [connection signal="body_exited" from="AreaProgress" to="." method="_on_area_progress_body_exited"]
-[connection signal="body_entered" from="AreaArt" to="." method="_on_area_art_body_entered"]
-[connection signal="body_exited" from="AreaArt" to="." method="_on_area_art_body_exited"]
+[connection signal="area_entered" from="AreaArt" to="." method="_on_area_art_area_entered"]
+[connection signal="area_exited" from="AreaArt" to="." method="_on_area_art_area_exited"]

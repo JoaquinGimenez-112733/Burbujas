@@ -13,11 +13,13 @@ func punto_random(collision_shape_2d: CollisionShape2D):
 func crear_npc(pos: Vector2):
 	#Generamos al azar un dominio propio y uno target
 	#y agarramos dos simbolos propios y uno target, random
-	var dominios = Simbolos.dominios_random(2)
+	var dominios = Simbolos.dominios_random(3)
 	var dominio_propio = dominios[0]
 	var dominio_quiere = dominios[1]
+	var dominio_aborrece = dominios[2]
 	var tiene = Simbolos.simbolos_random_de(dominio_propio, 2)
 	var quiere = Simbolos.simbolos_random_de(dominio_quiere, 1)
+	var aborrece = Simbolos.simbolos_random_de(dominio_aborrece, 1)
 	
 	var npc = npc_scene.instantiate()
 	

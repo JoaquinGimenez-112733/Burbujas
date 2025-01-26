@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cw5r03j38aq20"]
+[gd_scene load_steps=7 format=3 uid="uid://cw5r03j38aq20"]
 
 [ext_resource type="Script" path="res://Scenes/tooltip.gd" id="1_4a54v"]
 [ext_resource type="Texture2D" uid="uid://wgf0gai4f0dg" path="res://Assets/ICONOS/BURBUJA DIALOGO.png" id="2_d4hfr"]
 [ext_resource type="Texture2D" uid="uid://fj2eils6fbbg" path="res://Assets/ICONOS/PREGUNTA.png" id="3_b2n7o"]
+[ext_resource type="AudioStream" uid="uid://6sp228posxln" path="res://Assets/Sounds/buburjatiene.wav" id="4_bj25y"]
+[ext_resource type="AudioStream" uid="uid://b2ansdejd7usm" path="res://Assets/Sounds/buburjaquiere.wav" id="5_xcsvc"]
+[ext_resource type="AudioStream" uid="uid://c5pr0643e7koq" path="res://Assets/Sounds/buburjaborrece.wav" id="6_8bm0u"]
 
 [node name="Tooltip" type="Control"]
 modulate = Color(1, 1, 1, 0)
@@ -38,3 +41,12 @@ position = Vector2(-28, -2)
 rotation = 3.14159
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_b2n7o")
+
+[node name="burbujatiene" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_bj25y")
+
+[node name="burbujaquiere" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_xcsvc")
+
+[node name="burbujaborrece" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_8bm0u")
