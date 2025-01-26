@@ -3,6 +3,11 @@ extends Node2D
 
 const npc_scene = preload('res://Scenes/npc.tscn')
 
+func new_game():
+	print("New game")
+	$Spawn.start()
+	$Player.show()
+	
 func crear_npc():
 	#Generamos al azar un dominio propio, uno target y uno aborrecido
 	#y agarramos dos simbolos propios y uno target, random
@@ -28,7 +33,8 @@ func crear_npc():
 
 
 var npcs = 0
-func _on_spawn_timeout() -> void:
+func _on_spawn_timeout():
+	print("Spawneando NPC")
 	if npcs < 60:
 		crear_npc()
 		npcs += 1
