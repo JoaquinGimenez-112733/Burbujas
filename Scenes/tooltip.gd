@@ -4,28 +4,30 @@ extends Control
 const dy = 20
 var gotitas = preload('res://Assets/ICONOS/AGUA.png')
 
-func decir(txts):
-	for txt in txts: 
-		var s = Simbolos.traer(txt)
-		if s:
-			$Imagen.texture = s['imagen']
-			
+func decir(cosas):
+	for cosa in cosas: 
+		
+		# Si es un símbolo
+		if 'imagen' in cosa:
+			$Imagen.texture = cosa['imagen']
+		
+		# Si es un txt
 		else:
-			$Label.text = txt
+			$Label.text = cosa
 		
 		await tween_entrada()
 		await get_tree().create_timer(1.5).timeout
 		await tween_salida()
 
-func preguntar(txts):
-	for txt in txts: 
-		var s = Simbolos.traer(txt)
-		if s:
+func preguntar(cosas):
+	for cosa in cosas: 
+		
+		if 'imagen' in cosa:
 			$"¿".visible = true
-			$Imagen.texture =  s['imagen'] 
+			$Imagen.texture =  cosa['imagen'] 
 			$"?".visible = true
 		else:	
-			$Label.text = '¿' + txt + '?'
+			$Label.text = '¿' + cosa + '?'
 		await tween_entrada()
 		await get_tree().create_timer(1.5).timeout
 		await tween_salida()
