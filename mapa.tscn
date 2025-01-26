@@ -54230,10 +54230,10 @@ sources/23 = SubResource("TileSetAtlasSource_ilttl")
 size = Vector2(5584, 3191.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rhhff"]
-size = Vector2(2659, 1820)
+size = Vector2(2722, 1553)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vceek"]
-size = Vector2(2515.75, 1254.5)
+size = Vector2(2836, 1503.5)
 
 [node name="Mapa" type="Node2D"]
 position = Vector2(17, 36)
@@ -54278,17 +54278,16 @@ shape = SubResource("RectangleShape2D_ed6uy")
 [node name="AudioGlobalNat" type="AudioStreamPlayer2D" parent="AreaNat"]
 position = Vector2(1001, 1734)
 stream = ExtResource("39_2qxwg")
-volume_db = 9.905
+volume_db = 5.448
 max_distance = 2500.0
 attenuation = 2.0
 panning_strength = 0.3
 
 [node name="AreaProgress" type="Area2D" parent="."]
-visible = false
 position = Vector2(-94, 71)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaProgress"]
-position = Vector2(4293.5, 900)
+position = Vector2(4325, 872.5)
 shape = SubResource("RectangleShape2D_rhhff")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AreaProgress"]
@@ -54296,23 +54295,21 @@ position = Vector2(4147, 885)
 stream = ExtResource("39_q471h")
 volume_db = 5.945
 max_distance = 1500.0
-attenuation = 0.500001
 panning_strength = 0.0
 playback_type = 1
 
 [node name="AreaArt" type="Area2D" parent="."]
-visible = false
 position = Vector2(313, -437)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaArt"]
-position = Vector2(3943.88, 3033.25)
+position = Vector2(3902, 2908.75)
 shape = SubResource("RectangleShape2D_vceek")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AreaArt"]
-position = Vector2(3993, 2982)
+position = Vector2(3718, 2994)
 stream = ExtResource("41_lxban")
-volume_db = 4.105
-max_distance = 1500.0
+volume_db = 1.134
+attenuation = 0.870551
 
 [connection signal="body_entered" from="AreaNat" to="." method="_on_area_nat_body_entered"]
 [connection signal="body_exited" from="AreaNat" to="." method="_on_area_nat_body_exited"]
