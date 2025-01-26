@@ -21,6 +21,7 @@ Globals="*res://Scripts/globals.gd"
 Simbolos="*res://Scripts/simbolos.gd"
 Nombres="*res://Scripts/nombres.gd"
 Utils="*res://Scripts/utils.gd"
+Navegacion="*res://Scripts/navegacion.gd"
 
 [global_group]
 

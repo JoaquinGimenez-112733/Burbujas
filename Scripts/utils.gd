@@ -9,6 +9,9 @@ func pick_random(lista: Array, n: int):
 		res.append(elem)
 	return res
 	
+func pick_uno(lista: Array):
+	return lista[randi_range(0, lista.size() - 1)]
+	
 # Devueve la intersección de dos listas. 
 func interseccion(lista1: Array, lista2: Array):
 	var elems = []

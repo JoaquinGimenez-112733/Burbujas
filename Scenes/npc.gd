@@ -6,11 +6,17 @@ class_name NPC
 signal encuentro(npc)
 
 var nombre = ''
+var dominio = ''
 var focused = false
 var seleccionado = false
 var hablando = false
 var cerca = false
 var guid : String
+
+var DEBUG = true
+
+# La velocidad de desplazamiento
+var speed = 100
 
 const SPEED = 50
 var move = false
@@ -21,21 +27,32 @@ func _ready() -> void:
 	guid = generate_guid()
 	$AnimatedSprite2D.play("idle")
 	$Label.text = nombre
+	pasear()
 	
 func generate_guid():
 	var random_part = str(randi(), "_",randi()) 
 	var timestamp_part = str(Time.get_time_string_from_system())   # Timestamp (tiempo actual en segundos desde el 1 de enero de 1970)
 	
 	return random_part + "_" + timestamp_part  # Combinamos la parte aleatoria con el timestamp para asegurar unicidad
+  
 # Simbolos que tiene y quiere. Contiene símbolos enteros: objeto con 'imagen', 'nombre' y 'dominio'
 var tiene = []
 var quiere = []
 var aborrece = []
 
+@onready var nav: NavigationAgent2D = $NavigationAgent2D
+
 func _process(delta: float) -> void:
-	if move:
-		move_npc(delta)
+	#if move:
+	#	move_npc(delta)
 	queue_redraw()
+	
+	var direction = (nav.get_next_path_position() - global_position).normalized()
+	
+	velocity = direction * speed
+	
+	move_and_slide()
+
 
 # Al ponerle el mouse encima, habla si el juagdor está cerca
 
@@ -55,7 +72,8 @@ func _on_area_tooltip_mouse_exited() -> void:
 func _draw():
 	if focused:
 		draw_circle(Vector2.ZERO, 30, Color.WHITE, false)
-		
+	if DEBUG:
+		draw_line(Vector2.ZERO, to_local(nav.get_next_path_position()), Color.GREEN)
 
 # Al entrar o salir del area de "Influencia", 
 # seteamos la variable `cerca`
@@ -106,6 +124,16 @@ func _on_area_tooltip_input_event(viewport: Node, event: InputEvent, shape_idx: 
 			else :
 					$clickrebote.play()
 			
+
+
+func _on_target_paseo_timeout() -> void:
+	pasear()
+	
+func pasear():
+	if randf() < 0.8:
+		nav.target_position = Navegacion.point_propio(dominio)
+	else: 
+		nav.target_position = Navegacion.point_extranjero(dominio)
 		
 					
 				
