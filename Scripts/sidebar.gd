@@ -3,12 +3,8 @@ extends Control
 
 var array_names : Array
 var sidebar_open = false
-var tween : Tween
-func _ready() -> void:
-	tween = Tween.new()
-	#get_tree().root.add_child(tween)
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+var selected_npcs = []
+
 func _process(delta: float) -> void:
 	for npc in Globals.items_sidebar:
 		if npc.nombre not in array_names:
@@ -22,25 +18,33 @@ func _process(delta: float) -> void:
 			margin.add_theme_constant_override("margin_right",margin_size)
 			
 			var hbox = HBoxContainer.new()
-			var texture_rect = TextureRect.new()
-			texture_rect.stretch_mode =TextureRect.STRETCH_KEEP_CENTERED			
-			texture_rect.texture = npc.miniatura
-			hbox.add_child(texture_rect)
+			var portrait_button = TextureButton.new()
+			portrait_button.stretch_mode = TextureButton.STRETCH_KEEP_CENTERED			
+			portrait_button.texture_normal = npc.miniatura
+			for n in Globals.npcs:
+				if n.guid == npc.guid:							
+					portrait_button.pressed.connect(Callable(self,"_on_button_pressed").bind(n))
+			hbox.add_child(portrait_button)
 			
 			var vbox_labels = VBoxContainer.new()
 			var label  = Label.new()
 			label.text = npc.nombre		
-			var hboxImagenes = HBoxContainer.new()	
-			print(npc.array_imagenes.size())
+			var hboxImagenes = HBoxContainer.new()
+			var index : int	
+			index += 1
 			for imagen in npc.array_imagenes:
+				
+				var textureButton = TextureButton.new()				
+				textureButton.pressed.connect(Callable(self,"_on_button_pressed").bind(npc.nombre))
+				textureButton.stretch_mode = TextureButton.STRETCH_KEEP_CENTERED
+				textureButton.texture_normal = imagen.imagen
 				var texture1 = TextureRect.new()
 				texture1.stretch_mode =TextureRect.STRETCH_KEEP_CENTERED			
-				texture1.texture = imagen
-				hboxImagenes.add_child(texture1)
+				texture1.texture = imagen.imagen
+				hboxImagenes.add_child(textureButton)
 
 			
 			vbox_labels.add_child(label)
-			#vbox_labels.add_child(label2)
 			vbox_labels.add_child(hboxImagenes)
 			hbox.add_child(vbox_labels)
 			margin.add_child(hbox)
@@ -48,3 +52,15 @@ func _process(delta: float) -> void:
 			v_box_container.add_child(panel)
 			
 		array_names.append(npc.nombre)
+		
+func _on_button_pressed(npc):
+	if selected_npcs.size() < 2:
+		selected_npcs.append(npc)
+		if selected_npcs.size() == 2:
+			selected_npcs[1].set_move(selected_npcs[0].global_position)
+			#for n in Globals.npcs:
+				#if n.guid == selected_npcs[1].guid:
+					#n.set_move(selected_npcs[0].global_position)
+			#print(selected_npcs[1].nombre + " " + str(selected_npcs[1].pos) + " va hacia " + selected_npcs[0].nombre + " " + str(selected_npcs[0].pos))
+			selected_npcs.clear()
+	

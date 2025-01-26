@@ -251,6 +251,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o8won"]
+size = Vector2(20, 25)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e6ynp"]
 content_margin_left = 10.0
@@ -269,6 +270,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bbxc0"]
+size = Vector2(38, 42)
 
 [node name="Player" type="CharacterBody2D" groups=["Players"]]
 texture_filter = 1
