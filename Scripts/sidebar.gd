@@ -3,7 +3,6 @@ extends CanvasLayer
 
 var array_names : Array
 var sidebar_open = false
-var selected_npcs : Array[NPC] = []
 
 func _process(delta: float) -> void:
 	for npc in Globals.items_sidebar:
@@ -58,10 +57,7 @@ func _process(delta: float) -> void:
 			
 		array_names.append(npc.nombre)
 		
-func _on_button_pressed(npc):
-	if selected_npcs.size() < 2:
-		selected_npcs.append(npc)
-		if selected_npcs.size() == 2:
-			selected_npcs[1].set_move(selected_npcs[0].global_position)
-			selected_npcs.clear()
-	print(selected_npcs.size())
+func _on_button_pressed(npc_clickeado):
+	if Globals.selected_npc:
+		Globals.selected_npc.ir_a(npc_clickeado)
+		Globals.selected_npc = null

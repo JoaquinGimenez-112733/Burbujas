@@ -20,7 +20,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var mouse = get_global_mouse_position()
-	print(mouse)
 	zoom()
 	
 	if Input.is_action_just_pressed("ui_left"):		
@@ -78,7 +77,7 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 #				SELECT
 					
 				Globals.player_selecteds += 1	
-				print(Globals.player_selecteds)				
+				print(Globals.player_selecteds)
 				self.seleccionado = true
 				$AnimatedSprite2D.material.set_shader_parameter("seleccionado", seleccionado)
 			elif seleccionado == true:
@@ -96,9 +95,10 @@ func sidebar_control():
 	if sidebar_open:
 		create_tween().tween_property($Sidebar.get_node("%VBoxContainer"), "modulate", Color.TRANSPARENT, 0.6)
 		sidebar_open = false
-	elif !sidebar_open:
+	elif not(sidebar_open):
 		create_tween().tween_property($Sidebar.get_node("%VBoxContainer"), "modulate", Color.WHITE, 0.6)
 		sidebar_open = true
+
 func zoom():
 	if Input.is_action_pressed("ZOOM_IN"):
 		$Camera2D.zoom.x += 0.1

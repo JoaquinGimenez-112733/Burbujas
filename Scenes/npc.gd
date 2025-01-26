@@ -23,6 +23,9 @@ var COLORES = {
 # La velocidad de desplazamiento
 var speed = 60
 
+# Variable que tiene el NPC al que este está yendo
+var yendo_a: NPC = null
+
 var move = false
 var dest : Vector2
 var vel = Vector2(0,0)
@@ -50,6 +53,9 @@ func _process(delta: float) -> void:
 	#if move:
 	#	move_npc(delta)
 	queue_redraw()
+	
+	if yendo_a:
+		nav.target_position = yendo_a.position
 	
 	var direction = (nav.get_next_path_position() - global_position).normalized()
 	
@@ -117,51 +123,31 @@ func _on_area_tooltip_input_event(viewport: Node, event: InputEvent, shape_idx: 
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:		
 			if seleccionado == false and Globals.player_selecteds < Globals.max_players_selected:
 #				SELECT
-				Globals.player_selecteds += 1
-				print(Globals.player_selecteds)					
-				self.seleccionado = true
+				Globals.selected_npc = self				
+				seleccionado = true
 				$AnimatedSprite2D.material.set_shader_parameter("seleccionado", seleccionado)
 				$clickpersonaje.play()
 			elif seleccionado == true:
 #				DESELECT
 				Globals.player_selecteds -= 1
-				self.seleccionado = false
+				seleccionado = false
 				$AnimatedSprite2D.material.set_shader_parameter("seleccionado", seleccionado)
 			else :
 					$clickrebote.play()
-			
-
+					
 
 func _on_target_paseo_timeout() -> void:
 	pasear()
 	
 func pasear():
-	if randf() < 0.6:
-		nav.target_position = Navegacion.point_propio(dominio)
-	else: 
-		nav.target_position = Navegacion.point_extranjero(dominio)
+	if not(yendo_a):
+		if randf() < 0.6:
+			nav.target_position = Navegacion.point_propio(dominio)
+		else: 
+			nav.target_position = Navegacion.point_extranjero(dominio)
 					
-				
-#func move_npc(delta):
-#
-	#var angle = get_angle_to(dest)
-	#vel.x = cos(angle)
-	#vel.y = sin(angle)
-	#self.global_position +=  vel * speed * delta
-	#
-	#var distance = global_position.distance_to(dest)
-	#for n in Globals.npcs:
-		#if n.guid == self.guid:
-			#print(self.global_position)
-			#n = self
-			#break
-	#if distance <= 20.0:
-		#move = false
-#
-	#
-#func set_move(destination):
-	#print(self.global_position)
-	#dest.x = destination.x - 20
-	#dest.y = destination.y - 20
-	#move = true
-	#
+
+func ir_a(otro_npc):
+	yendo_a = otro_npc
+
+	
