@@ -84,27 +84,8 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("NPCs"):
-		var nombre = body.get("nombre")
-		if nombre not in Globals.npcs:
-			
-			if body.has_node("AnimatedSprite2D"):
-				var animated_sprite = body.get_node("AnimatedSprite2D") as AnimatedSprite2D
-				if animated_sprite:
-					
-					var frame = animated_sprite.get_frame()
-					var texture = animated_sprite.sprite_frames.get_frame_texture("idle_small", 0)
-					var quiere = body.get("quiere")
-					var tiene = body.get("tiene")
-					
-					var miniatura : Texture2D = texture
-					print(tiene.size(), tiene.size(), quiere.size())
-					Globals.miniaturas.append(miniatura)
-					var array_total : Array[CompressedTexture2D]
-					array_total.append_array(quiere)
-					array_total.append_array(tiene)
-					var item = Item_Sidebar.new(miniatura, nombre, array_total)
-					Globals.items_sidebar.append(item)
+	pass
+
 					
 func sidebar_control():
 	if sidebar_open:
