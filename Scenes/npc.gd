@@ -165,6 +165,7 @@ func on_alienar(que):
 func on_asombrar(que):
 	await $Tooltip.decir([que])
 	await $Tooltip.emocionar("amor")
+	$burbujitanpc.hide()
 	
 func on_aborrecer(que):
 	await $Tooltip.decir([que])
@@ -173,6 +174,7 @@ func on_aborrecer(que):
 func on_conversar(que):
 	await $Tooltip.decir([que])
 	await $Tooltip.emocionar("amor")
+	$burbujitanpc.hide()
 	
 func on_sentenciar(que):
 	await $Tooltip.decir([que])
@@ -181,4 +183,5 @@ func on_sentenciar(que):
 func on_inspirar(que):
 	await $Tooltip.decir([que])
 	await $Tooltip.emocionar("amor")
+	$burbujitanpc.hide()
 	
