@@ -54416,12 +54416,16 @@ position = Vector2(4018, 1695)
 metadata/_edit_lock_ = true
 
 [node name="Uno" type="Marker2D" parent="Markers/Arte"]
+position = Vector2(2363, 512)
 
 [node name="Dos" type="Marker2D" parent="Markers/Arte"]
+position = Vector2(2497, 1580)
 
 [node name="Tres" type="Marker2D" parent="Markers/Arte"]
+position = Vector2(3263, 2663)
 
 [node name="Cuatro" type="Marker2D" parent="Markers/Arte"]
+position = Vector2(5006, 2275)
 
 [connection signal="body_entered" from="AreaNat" to="." method="_on_area_nat_body_entered"]
 [connection signal="body_exited" from="AreaNat" to="." method="_on_area_nat_body_exited"]
