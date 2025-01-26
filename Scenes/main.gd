@@ -31,9 +31,17 @@ func crear_npc():
 
 func manejar_encuentro(npc1: NPC, npc2: NPC):
 	print('@main manejando encuentro entre ', npc1.nombre, ' y ', npc2.nombre)
+	
+	npc1.interactuando = true
+	npc2.interactuando = true
+	
 	var resultado = Interacciones.interactuar(npc1, npc2)
 	for interaccion in resultado: 
 		await Interacciones.despachar(interaccion)
+		
+	npc1.interactuando = false
+	npc2.interactuando = false
+	
 
 var npcs = 0
 func _on_spawn_timeout() -> void:
