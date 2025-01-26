@@ -1,18 +1,12 @@
 extends Node
 
-# Devuelve una sublista al azar, sin repeticiones
-func pick_random(lista: Array, n: int):
-	var dup = lista.duplicate()
-	var res = []
-	for i in range(n):
-		var elem = dup.pop_at(randi_range(0, dup.size() - 1))
-		res.append(elem)
-	return res
+
+# Contenido
 
 var dominios = ['naturaleza', 'arte', 'progreso']
 
 func dominios_random(n):
-	return pick_random(dominios, n)
+	return Utils.pick_random(dominios, n)
 
 var simbolos = [
 	{
@@ -81,7 +75,7 @@ func traer(txt):
 	for simbolo in simbolos:
 		if simbolo['nombre'] == txt:
 			return simbolo
-	return null		
+	return null
 
 var simbolos_de = {}
 
@@ -89,7 +83,7 @@ func simbolos_random_de(dominio, cuantos):
 	if dominio not in simbolos_de:
 		print('ERROR: ', dominio, ' no está entre nuestros dominios')
 		return []
-	return pick_random(simbolos_de[dominio], cuantos)
+	return Utils.pick_random(simbolos_de[dominio], cuantos)
 
 # Indexamos los símbolos por dominio
 func _ready() -> void:
@@ -98,24 +92,3 @@ func _ready() -> void:
 
 	for simbolo in simbolos:
 		simbolos_de[simbolo['dominio']].append(simbolo)
-
-
-# Recibe un par de NPCs y se devuelve los matches entre
-# el 'tiene' de uno y el 'quiere' del otro, o null si no hay
-func matchear(pj1: NPC, pj2: NPC):
-	var de_2_a_1 = []
-	for simbolo in pj1.quiere:
-		if simbolo in pj2.tiene:
-			de_2_a_1.append(pj1.quiere)
-	
-	var de_1_a_2 = []
-	for simbolo in pj2.quiere:
-		if simbolo in pj1.tiene:
-			de_1_a_2.append(pj1.quiere)
-			
-	if len(de_1_a_2) > 0 or len(de_2_a_1) > 0:
-		return [de_1_a_2, de_2_a_1]
-	else:
-		return null
-	
-	

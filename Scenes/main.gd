@@ -16,8 +16,8 @@ func crear_npc(pos: Vector2):
 	var dominios = Simbolos.dominios_random(2)
 	var dominio_propio = dominios[0]
 	var dominio_quiere = dominios[1]
-	var tiene = Simbolos.simbolos_random_de(dominio_propio, 2).map(func (s): return s['nombre'])
-	var quiere = Simbolos.simbolos_random_de(dominio_quiere, 1).map(func (s): return s['nombre'])
+	var tiene = Simbolos.simbolos_random_de(dominio_propio, 2)
+	var quiere = Simbolos.simbolos_random_de(dominio_quiere, 1)
 	
 	var npc = npc_scene.instantiate()
 	
